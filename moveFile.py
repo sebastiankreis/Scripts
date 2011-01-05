@@ -65,8 +65,6 @@ class Move():
                 except Exception, msg:
                         print msg
                         return
-
-                print os.getcwd()
                                 
 		for f in glob.glob('*'):
                         name,ext = os.path.splitext(f)
