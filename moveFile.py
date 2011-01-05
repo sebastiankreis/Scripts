@@ -1,10 +1,15 @@
+#Author: Dan Tracy
+#Name: moveFile.py
+#Date: Jan 5, 2011
+
+
+from os import path, walk, rename
+from glob import glob
+
 class Move():
 
 	@staticmethod
 	def addExtensions( exts=[], extmapping={}, resetExts=False ):
-		from os import path, walk, rename
-		from glob import glob
-
 		if resetExts:
 			Move.__exts__ = None
 			Move.__extmap__ = None

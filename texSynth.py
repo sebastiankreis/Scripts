@@ -1,5 +1,6 @@
-# Texture Synthesis based off of Efros and Freeman
-# Dan Tracy
+#Author: Dan Tracy
+#Name: texSynth.py
+#Date: Dec 3, 2010
 
 import sys
 from random import randint as rand
