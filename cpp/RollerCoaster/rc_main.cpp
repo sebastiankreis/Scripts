@@ -68,16 +68,16 @@ inline GLfloat iterpolate(GLfloat a, GLfloat b, GLfloat c, GLfloat d, GLfloat t)
 { 
 	return (0.5f*( (2*b) +
 		     ((-a + c)*t) +
-			 ((2*a -5*b + 4*c - d)*t*t) +
-			 (((-a + 3*b - 3*c +d)*t*t*t))
+		     ((2*a -5*b + 4*c - d)*t*t) +
+	             (((-a + 3*b - 3*c +d)*t*t*t))
 			 ));
 }
 
 Vec3f catmull(Vec3f a, Vec3f b, Vec3f c, Vec3f d, GLfloat t)
 {
 	return Vec3f(   iterpolate(a.x(), b.x(), c.x(), d.x(), t),
-					iterpolate(a.y(), b.y(), c.y(), d.y(), t),
-					iterpolate(a.z(), b.z(), c.z(), d.z(), t)
+			     iterpolate(a.y(), b.y(), c.y(), d.y(), t),
+			     iterpolate(a.z(), b.z(), c.z(), d.z(), t)
 					);					
 }
 
