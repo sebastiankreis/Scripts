@@ -3,6 +3,8 @@
 #Date: Jan 5, 2011
 #intended for python 2.7
 
+
+
 def renameExts( path = None, extensions = None ):
 	""" Renames the files in the path given with the dictionary of extensions"""
 	if path is None:
