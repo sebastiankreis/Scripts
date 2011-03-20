@@ -30,10 +30,7 @@ class Vector(object):
 
     @property
     def length(self):
-        import math
-        return math.sqrt( self[0]**2 + \
-                          self[1]**2 + \
-                          self[2]**2)
+        return ( x**2 + y**2 + z**2 ) ** (0.5)
 
     def set(self, x=0, y=0 ,z=0):
         try:
