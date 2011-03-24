@@ -64,18 +64,27 @@ class Vector(object):
         return self[0]
     @x.setter
     def x(self,value):
-        self[0] = value
+		try:
+			self[0] = float(value)
+		except:
+			pass
 
     @property
     def y(self):
         return self[1]
     @y.setter
     def y(self,value):
-		self[1] = value
+		try:
+			self[1] = float(value)
+		except:
+			pass
 
     @property
     def z(self):
         return self[2]
     @z.setter
     def z(self,value):
-        self[2] = value
+        try:
+			self[2] = float(value)
+		except:
+			pass

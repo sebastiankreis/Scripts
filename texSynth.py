@@ -23,6 +23,13 @@ class Synth:
         cv.SetZero(self.image)
         self.textonSize = texton
         self.size = size
+		
+		self.imageTextons = []
+		self.textureTextons=[]
+		for u in xrange(0, self.image.height, self.textonSize[0]):
+            for v in xrange(0, self.image.width, self.textonSize[1]):
+				self.imageTextons.append( self.getTexton(u,v) )
+				self.textureTextons.append( self.getTexton(u,v) )
         
 
     ## Retrieve a textonSize by textonSize square from the image
@@ -30,7 +37,7 @@ class Synth:
         x  = max( x - self.textonSize[0], 0)
         y  = max( y - self.textonSize[1], 0)
         dx = min( x + self.textonSize[0], image.width)
-        dy = min( y + self.textonSize[0], image.height)
+        dy = min( y + self.textonSize[1], image.height)
         return image[x:dx, y:dy]
     
     
@@ -47,22 +54,15 @@ class Synth:
         i = rand(0, self.texture.height)
         j = rand(0, self.texture.width)
         textureTexton = self.getTexton( self.texture, i, j)
-        imageTexton = self.getTexton( self.image, 0, 0)
+        imageTexton = self.imageTexton[0]
         self.copyTexture(imageTexton, textureTexton)
         
-        total = self.image.height
-        
-        for u in xrange(0, self.image.height, self.textonSize[0]):
-            for v in xrange(0, self.image.width, self.textonSize[1]):
-
-                if (u,v) == (0,0):
-                    continue
-                    
-                previousTexton = textureTexton
-                imageTexton = self.getTexton(self.image,u,v)
-                textureTexton = self.searchTexture(previousTexton)
-                #textureTexton = self.blend(textureTexton,previousTexton)
-                self.copyTexture(imageTexton, textureTexton)
+        for tex in self.imageTextons[1:]:                    
+            previousTexton = textureTexton
+            imageTexton = tex
+            textureTexton = self.searchTexture(previousTexton)
+            #textureTexton = self.blend(textureTexton,previousTexton)
+            self.copyTexture(imageTexton, textureTexton)
 
     ## This utilizes my distance metric, I use a relative L2 norm to compare two overlapping regions
     def searchTexture(self, tex):
@@ -73,16 +73,14 @@ class Synth:
         index = (0,0)
         currentTile = tex
         
-        for u in xrange(0, self.texture.height, self.textonSize[0]):
-            for v in xrange(0, self.texture.width, self.textonSize[1]):
-                candidate = self.getTexton(self.texture, u, v)        
-                candCut= self.getCut(candidate,0,0,overlap,candidate.height)
+        for candidate in self.textureTextons:
+            candCut= self.getCut(candidate,0,0,overlap,candidate.height)
 
-                result = cv.Norm(texCut, candCut, cv.CV_RELATIVE_L2)
+            result = cv.Norm(texCut, candCut, cv.CV_RELATIVE_L2)
     
-                if minSSD > result:
-                    index = (u,v)
-                    minSSD = result
+            if minSSD > result:
+                index = (u,v)
+                minSSD = result
 
         return self.getTexton(self.texture, index[0], index[1])
 
@@ -122,7 +120,7 @@ class Synth:
     ## End of the Synth Class
 
 
-	
+
 def checkInput(inp, varName):
     string = "Error: {0} needs to be a valid integer greater than zero.".format(varName)
     try:
