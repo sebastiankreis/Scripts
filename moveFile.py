@@ -40,12 +40,10 @@ def zipdir(path=None, archiveName = "test.zip"):
         import zipfile, os
         
         parent = os.getcwd()
-        os.chdir( path )
-        #So we dont accidentally include the zipfile we create in our file list
         files = os.listdir(path)
         
         with zipfile.ZipFile(archiveName, mode='w', compression=zipfile.ZIP_DEFLATED) as z:
-                for f in files:
-                        z.write(f)
-                        
-        os.chdir(parent)
+			os.chdir( path )
+			for f in files:
+				z.write(f)
+			os.chdir(parent)
