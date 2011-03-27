@@ -32,18 +32,27 @@ def renameExts( path = None, extensions = None, recurseIntoFolders=False ):
                                 except Exception as ex:
                                         print ex
         
-        
-def zipdir(path=None, archiveName = "test.zip"):
-        if path is None:
-                raise Exception("Empty path passed to function")
-                
-        import zipfile, os
-        
+
+def zipDirs(topPath = None, ext = 'zip'):
+        topPath = os.path.realpath(topPath)
         parent = os.getcwd()
-        files = os.listdir(path)
+        os.chdir(topPath)
+
+        def __zipdir(path=None, parent=None, archiveName = "test.zip"):
+                files = os.listdir(path)
+                with zipfile.ZipFile(archiveName, mode='w', compression=zipfile.ZIP_DEFLATED) as z:
+                        os.chdir(path)
+                        for f in files:
+                                z.write(f)
+                        os.chdir(parent)
         
-        with zipfile.ZipFile(archiveName, mode='w', compression=zipfile.ZIP_DEFLATED) as z:
-			os.chdir( path )
-			for f in files:
-				z.write(f)
-			os.chdir(parent)
+        for dirs in os.listdir(topPath):
+                dirs = os.path.realpath(dirs)
+                if os.path.isdir(dirs):
+                        print dirs
+                        __zipdir(dirs, topPath, dirs+'.'+ext)
+
+        os.chdir(parent)
+                
+
+                 
