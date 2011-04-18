@@ -3,7 +3,8 @@
 #Date: Jan 5, 2011
 #intended for python 2.7
 
-
+import os
+import zipfile
 
 def renameExts( path = None, extensions = None, recurseIntoFolders=False ):
         """ Renames the files in the path given with the dictionary of extensions"""
@@ -11,10 +12,7 @@ def renameExts( path = None, extensions = None, recurseIntoFolders=False ):
                 raise Exception("Empty path passed to function")
         if extensions is None or type(extensions) is not dict:
                 raise Exception("Invalid type for extensions dictionary")
-        
-        #try not to mangle the namespace as much
-        import os
-        
+ 
         for f in os.listdir(path):
                 name,ext = os.path.splitext(f)
                 name = os.path.join(path,name)
@@ -28,7 +26,7 @@ def renameExts( path = None, extensions = None, recurseIntoFolders=False ):
                                 f = os.path.join(path, f)
                                 name = name + '.' + extensions[ext]
                                 try:
-                                        os.rename(f, name)
+                                        os.rename(f, os.path.join(path,name))
                                 except Exception as ex:
                                         print ex
         
@@ -47,9 +45,10 @@ def zipDirs(topPath = None, ext = 'zip'):
                         os.chdir(parent)
         
         for dirs in os.listdir(topPath):
+                name = dirs
                 dirs = os.path.realpath(dirs)
                 if os.path.isdir(dirs):
-                        print dirs
+                        print "Zipping {0}".format(dirs)
                         __zipdir(dirs, topPath, dirs+'.'+ext)
 
         os.chdir(parent)
