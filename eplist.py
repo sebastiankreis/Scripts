@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import urllib2 as urllib
 import re
 import string
