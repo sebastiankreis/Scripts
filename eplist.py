@@ -1,7 +1,10 @@
 import urllib2 as urllib
 import re
-import sys
+import string
 
+#output display format
+#Season - Episode Number - Episode Title
+display = "Season {0} - Episode {1} - {2}"
 
 class Episode(object):
 	def __init__(self, title, epNumber, season):
@@ -9,25 +12,40 @@ class Episode(object):
 		self.season = season
 		self.episode = epNumber
 	def __repr__(self):
-		return "Season {0} - Episode {1} - {2}".format(self.season,self.episode,self.title)
+                global display
+		return display.format(self.season,self.episode,self.title)
 			
 class EpParser(object):
 	def __init__(self, showTitle):
-		self.title = showTitle.replace(' ','').strip()
+		self.title = self.__prepareTitle(showTitle.lower())
 		self.url = "http://epguides.com/" + self.title
 		self.episodeList = []
 		self.parseData()
-			
+
+	def __prepareTitle(self, title):
+                '''Remove any punctuation and whitespace from the title'''
+		exclude = set(string.punctuation)
+		title = ''.join(ch for ch in title if ch not in exclude)
+		title = title.split()
+		if title[0] == 'the': title.remove('the')
+		return ''.join(title)
+		
 	def __getData(self):
 		try:
 			request = urllib.urlopen( self.url )
 			return request.readlines()
 		except urllib.HTTPError as e:
-			print 'HTTP Response: {0}'.format(e)
+                        print '{0}'.format(e)
+			if e.getcode == 404:
+                                print 'Show {0} was not found, please check your spelling.'.format(self.title)
 			exit()
+		except urllib.URLError as e:                        
+                        print '{0}'.format(e)
 		
 
 	def parseData(self):
+                '''Requests the title's webpage from the URL, parses information,
+                   and populates the episodeList'''
 		data = self.__getData()
 		
 		pattern = r"""
@@ -53,16 +71,36 @@ class EpParser(object):
 			if info is not None:
 				n = info.group('name')
 				e = info.group('episode')
-				s = info.group('season')
+				s = int(info.group('season'))
 				n = re.sub('<.*?>', '', n).strip()
 				self.episodeList.append( Episode(n,e,s) )
 				
-				
-if __name__ == '__main__':
-	if len(sys.argv)== 1:
-		title = raw_input('Enter show title: ')
-	else:
-		title = sys.argv[1]
+
+def main():
+
+	import argparse
+	import sys
+
+	parser = argparse.ArgumentParser()
+	parser.add_argument('title', help="The title of the show")
+	parser.add_argument('-s','--season', default=-1, type=int, help="The specific season to search for")
+	namespace = parser.parse_args()
+
+	title = namespace.title
+	season= namespace.season
+	
 	ep = EpParser(title)
-	for eps in ep.episodeList:
-		print "Season {0} - Episode {1} - {2}".format(eps.season, eps.episode, eps.title)
+	results = ep.episodeList
+
+	header  = "Show: {0}\n------" + ('-'*len(title))
+	if season != -1:
+		results = filter(lambda x: x.season == season, results)
+
+	print header.format(title)
+	for eps in results:
+		print eps
+
+
+if __name__ == '__main__':
+	main()
+	
