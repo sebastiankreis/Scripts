@@ -14,7 +14,7 @@ class Episode(object):
 		self.season = season
 		self.episode = epNumber
 	def __repr__(self):
-                global display
+		global display
 		return display.format(self.season,self.episode,self.title)
 			
 class EpParser(object):
@@ -25,7 +25,7 @@ class EpParser(object):
 		self.parseData()
 
 	def __prepareTitle(self, title):
-                '''Remove any punctuation and whitespace from the title'''
+		'''Remove any punctuation and whitespace from the title'''
 		exclude = set(string.punctuation)
 		title = ''.join(ch for ch in title if ch not in exclude)
 		title = title.split()
@@ -37,17 +37,17 @@ class EpParser(object):
 			request = urllib.urlopen( self.url )
 			return request.readlines()
 		except urllib.HTTPError as e:
-                        print '{0}'.format(e)
+			print '{0}'.format(e)
 			if e.getcode == 404:
-                                print 'Show {0} was not found, please check your spelling.'.format(self.title)
+				print 'Show {0} was not found, please check your spelling.'.format(self.title)
 			exit()
 		except urllib.URLError as e:                        
-                        print '{0}'.format(e)
+			print '{0}'.format(e)
 		
 
 	def parseData(self):
-                '''Requests the title's webpage from the URL, parses information,
-                   and populates the episodeList'''
+		'''Requests the title's webpage from the URL, parses information,
+		   and populates the episodeList'''
 		data = self.__getData()
 		
 		pattern = r"""
@@ -79,13 +79,17 @@ class EpParser(object):
 				
 
 def main():
-
 	import argparse
 	import sys
+	sys.argv = '-s 1 "The Wire"'.split()
 
 	parser = argparse.ArgumentParser()
-	parser.add_argument('title', help="The title of the show")
-	parser.add_argument('-s','--season', default=-1, type=int, help="The specific season to search for")
+	parser.add_argument('title',
+			    help="The title of the show")
+	parser.add_argument('-s','--season', default=-1, type=int,
+			    help="The specific season to search for")
+	parser.add_argument('-d','--display-header', action="store_true",
+			    help="Display the header at the top of the output")
 	namespace = parser.parse_args()
 
 	title = namespace.title
@@ -98,7 +102,9 @@ def main():
 	if season != -1:
 		results = filter(lambda x: x.season == season, results)
 
-	print header.format(title)
+	if namespace.display_header:
+		print header.format(title)
+		
 	for eps in results:
 		print eps
 
