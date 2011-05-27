@@ -1,5 +1,5 @@
+*.db
 *.o
-/testdir
 [Oo]bj
 [Bb]in
 *.user

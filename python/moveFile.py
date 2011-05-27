@@ -1,4 +1,5 @@
 #Author: Dan Tracy
+#!/usr/bin/env python
 #Name: moveFile.py
 #Date: Jan 5, 2011
 #intended for python 2.7
@@ -6,7 +7,7 @@
 import os
 import zipfile
 
-def renameExts( path = None, extensions = None, recurseIntoFolders=False ):
+def renameExts( path = None, extensions = {'zip':'cbz','rar':'cbr'}, recurseIntoFolders=False ):
         """ Renames the files in the path given with the dictionary of extensions"""
         if path is None:
                 raise Exception("Empty path passed to function")

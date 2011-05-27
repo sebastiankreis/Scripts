@@ -25,9 +25,9 @@ class Synth:
 
         for u in xrange(0, self.image.height, self.textonSize[0]):
             for v in xrange(0, self.image.width, self.textonSize[1]):
-                self.imageTextons.append( self.getTexton(u,v) )
-                self.textureTextons.append( self.getTexton(u,v) )
-                
+                self.imageTextons.append( self.getTexton(self.image,u,v) )
+                self.textureTextons.append( self.getTexton(self.texture,u,v) )
+				              
     ## Retrieve a textonSize by textonSize square from the image
     def getTexton(self, image, x=0, y=0):
         x  = max( x - self.textonSize[0], 0)
@@ -48,7 +48,7 @@ class Synth:
         i = rand(0, self.texture.height)
         j = rand(0, self.texture.width)
         textureTexton = self.getTexton( self.texture, i, j)
-        imageTexton = self.imageTexton[0]
+        imageTexton = self.imageTextons[0]
         self.copyTexture(imageTexton, textureTexton)
 
         for tex in self.imageTextons[1:]:
@@ -113,9 +113,7 @@ class Synth:
 if __name__ == '__main__':
     import argparse
     import sys
-
-    test = "-i test"
-
+    
     parser = argparse.ArgumentParser(description="Texture Synthesis Program")
     parser.add_argument('-i','--input-file', required=True, type=str,
                         metavar='f', help='Input image filename')
@@ -129,15 +127,11 @@ if __name__ == '__main__':
     parser.add_argument('-s','--output-size', type=int, default=256,
                         metavar='n', help="default is 256 pixels")
 
-    namespace = parser.parse_args(test.split())
+    namespace = parser.parse_args()
     texFile = namespace.input_file
     texSize = namespace.texton_size
     size    = namespace.output_size
     outFile = namespace.output_file
-
-    
-    print namespace
-    
     
     generatedImage = Synth( texFile, (texSize,texSize), (size,size), outFile )
     generatedImage.quilt()
