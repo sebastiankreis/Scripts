@@ -70,7 +70,6 @@ class EpParser(object):
 		if showId == -1: return []
 
 		return self.cache.getEpisodes(showId)
-		
 		 
 
 	def _getHTMLData(self):
@@ -199,13 +198,12 @@ def main():
 	
 	title   = namespace.title
 	season  = namespace.season
-	noCache = namespace.nocache
 	newCache= namespace.recreatecache
 
 	global verbose
 	verbose = namespace.verbose
 
-	if sql is None or noCache == True:
+	if sql is None:
 		cache = None
 	else:
 		cache = Cache(recreate=newCache)

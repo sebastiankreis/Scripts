@@ -30,7 +30,23 @@ def renameExts( path = None, extensions = {'zip':'cbz','rar':'cbr'}, recurseInto
                                         os.rename(f, os.path.join(path,name))
                                 except Exception as ex:
                                         print ex
-        
+
+def renameFiles( path=None, names = None ):
+        if path is None or names is None:
+                raise Exception
+
+        files = os.listdir(path)
+        for f,n in zip(files,names):
+                _,ext = os.path.splitext(f)
+                n = n.strip() + ext
+                n = os.path.join(path,n)
+                f = os.path.join(path,f)
+                print f
+                print n
+                print ""
+                os.rename(f,n)
+       
+                
 
 def zipDirs(topPath = None, ext = 'zip'):
         topPath = os.path.realpath(topPath)
