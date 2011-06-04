@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+# author: Dan Tracy
+
 class Vector(object):
 	def __init__(self, x=0, y=0, z=0):
 		self.__data__ = [x,y,z]

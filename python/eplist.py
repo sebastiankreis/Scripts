@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# author:  Dan Tracy
+# program: eplist.py
+
 import urllib2 as urllib
 import re
 import string
@@ -10,8 +13,8 @@ try:
 except ImportError:
 	sql = None
 
-#output display format
-#Season - Episode Number - Episode Title
+# output display format, season is padded with zeros
+# Season - Episode Number - Episode Title
 display = "Season {0} - Episode {1} - {2}"
 verbose = False
 
@@ -26,21 +29,20 @@ class Episode(object):
 		return display.format(self.season,self.episode,self.title)
 			
 class EpParser(object):
+	global verbose
+	
 	def __init__(self, showTitle, cache=None):
 		''' Proper title is used for the database/url while the display
 		title is used for error messages/display purposes'''
-		global verbose
 		self.properTitle = self._prepareTitle(showTitle.lower())
 		self.displayTitle = showTitle
 		
 		self.url = "http://epguides.com/" + self.properTitle
 		self.episodeList = []
 		self.cache = cache
-		self.verbose = verbose
 
 	def _prepareTitle(self, title):
 		'''Remove any punctuation and whitespace from the title'''
-		
 		exclude = set(string.punctuation)
 		title = ''.join(ch for ch in title if ch not in exclude)
 		title = title.split()
@@ -53,16 +55,22 @@ class EpParser(object):
 
 		# The show was found in the database
 		if self.episodeList != []:
-			if self.verbose: print "Show found in database"
+			if verbose: print "Show found in database"
 			self.cache.close()
-			return 
-		if self.verbose: print "Show not found in database, polling web"
+			return self.episodeList
+
+		# The show was not in the database so now we try the website
+		if verbose: print "Show not found in database, polling web"
 		self.episodeList = self._parseHTMLData()
 
+		# If we successfully find the show from the internet then
+		# we should add it to our database for later use
 		if self.cache is not None:
-			if self.verbose: print "Adding show to the database"
+			if verbose: print "Adding show to the database"
 			self.cache.addShow( self.properTitle, self.episodeList )
 			self.cache.close()
+
+		return self.episodeList
 			
 	def _parseCacheData(self):
 		showId = self.cache.getShowId(self.properTitle)
@@ -78,7 +86,11 @@ class EpParser(object):
 				return request.readlines()
 			
 	def _parseHTMLData(self):
-		data = self._getHTMLData()
+		try:
+			data = self._getHTMLData()
+		except urllib.HTTPError:
+			exit("ERROR: Show was not found, check spelling and try again")
+			
 		episodes = []
 		pattern = r"""
 			^		        # Start of the string
@@ -109,26 +121,28 @@ class EpParser(object):
 		return episodes
 
 class Cache(object):
+	global verbose
+	_sqlquery = '''
+		DROP TABLE episodes;
+		DROP TABLE shows;
+
+		CREATE TABLE shows (
+			sid INTEGER PRIMARY KEY,
+			title TEXT
+		);
+		CREATE TABLE episodes (
+			eid INTEGER PRIMARY KEY,
+			sid INTEGER, eptitle TEXT,
+			season INTEGER,
+			showNumber INTEGER
+		);'''
+	
 	def __init__(self, recreate=False, db="episodes.db"):
 		self.connection = sql.connect(db)
 		self.cursor = self.connection.cursor()
 		if recreate == True:
-			print "Making a new cache"
-			self.cursor.executescript( '''
-				DROP TABLE episodes;
-				DROP TABLE shows;
-
-				CREATE TABLE shows (	
-					sid INTEGER PRIMARY KEY, 
-					title TEXT
-					);
-
-				CREATE TABLE episodes ( 
-					eid INTEGER PRIMARY KEY, 
-					sid INTEGER, eptitle TEXT, 
-					season INTEGER, 
-					showNumber INTEGER
-			);''')
+			if verbose: print "Making a new cache"
+			self.cursor.executescript( _sqlquery )
 
 	def close(self):
 		self.cursor.close()
@@ -195,13 +209,13 @@ def main():
 			    help="Will recreate the cache from scratch, be sure you want to")
 	
 	namespace = parser.parse_args()
-	
-	title   = namespace.title
-	season  = namespace.season
-	newCache= namespace.recreatecache
 
 	global verbose
-	verbose = namespace.verbose
+	verbose  = namespace.verbose
+	title    = namespace.title
+	season   = namespace.season
+	newCache = namespace.recreatecache
+	displayheader = namespace.display_header	
 
 	if sql is None:
 		cache = None
@@ -209,24 +223,23 @@ def main():
 		cache = Cache(recreate=newCache)
 		
 	ep = EpParser(title, cache)
-	ep.parseData()
-	results = ep.episodeList
+	results = ep.parseData()
 
-	if namespace.display_header or namespace.verbose:
-		print ""
-		print "Show: {0}".format(title)
+	disp_or_verbose = displayheader or verbose
+	if disp_or_verbose:
+		print "\nShow: {0}".format(title)
 		print "Number of episodes: {0}".format(len(results))
 		print "Number of seasons: {0}".format( results[-1].season )
 		print "-" * 30
-		print ""
 
 	if season != -1:
 		results = filter(lambda x: x.season == season, results)
 
 	currSeason = results[0].season
 	for eps in results:
-		if currSeason != eps.season:
-			print ""
+		if currSeason != eps.season and disp_or_verbose :
+			print "\nSeason {0}".format(eps.season)
+			print "----------"
 		print eps
 		currSeason = eps.season
 

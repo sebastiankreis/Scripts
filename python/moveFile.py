@@ -1,8 +1,8 @@
 #Author: Dan Tracy
 #!/usr/bin/env python
-#Name: moveFile.py
-#Date: Jan 5, 2011
-#intended for python 2.7
+# Name: moveFile.py
+# Date: Jan 5, 2011
+# intended for python 2.7
 
 import os
 import zipfile

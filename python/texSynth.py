@@ -1,4 +1,6 @@
 #Author: Dan Tracy
+#!/usr/bin/env python
+
 #Name: texSynth.py
 #Date: Dec 3, 2010
 
