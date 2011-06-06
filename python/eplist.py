@@ -74,7 +74,8 @@ class EpParser(object):
 			
 	def _parseCacheData(self):
 		showId = self.cache.getShowId(self.properTitle)
-		
+
+		# The query should return a positive show id otherwise it's not in the database
 		if showId == -1: return []
 
 		return self.cache.getEpisodes(showId)
@@ -84,10 +85,11 @@ class EpParser(object):
 		with closing(urllib.urlopen( self.url )) as request:
 			if request.getcode() == 200:
 				return request.readlines()
+			else: return []
 			
 	def _parseHTMLData(self):
 		try:
-			data = self._getHTMLData()
+                        data = self._getHTMLData()
 		except urllib.HTTPError:
 			exit("ERROR: Show was not found, check spelling and try again")
 			
@@ -121,10 +123,9 @@ class EpParser(object):
 		return episodes
 
 class Cache(object):
-	global verbose
 	_sqlquery = '''
-		DROP TABLE episodes;
-		DROP TABLE shows;
+                DROP TABLE shows;
+                DROP TABLE episodes;
 
 		CREATE TABLE shows (
 			sid INTEGER PRIMARY KEY,
@@ -132,17 +133,20 @@ class Cache(object):
 		);
 		CREATE TABLE episodes (
 			eid INTEGER PRIMARY KEY,
-			sid INTEGER, eptitle TEXT,
+			sid INTEGER,
+			eptitle TEXT,
 			season INTEGER,
-			showNumber INTEGER
+			showNumber INTEGER,			
+			FOREIGN KEY(sid) REFERENCES shows(sid)
 		);'''
 	
 	def __init__(self, recreate=False, db="episodes.db"):
+                global verbose
 		self.connection = sql.connect(db)
 		self.cursor = self.connection.cursor()
 		if recreate == True:
 			if verbose: print "Making a new cache"
-			self.cursor.executescript( _sqlquery )
+			self.cursor.executescript( Cache._sqlquery )
 
 	def close(self):
 		self.cursor.close()
@@ -188,7 +192,7 @@ def main():
 	import argparse
 	import sys
 
-	parser = argparse.ArgumentParser(description="Episode Parser")
+	parser = argparse.ArgumentParser(description="TV Show Information Parser")
 
 	parser.add_argument('title',
 			    help="The title of the show")
@@ -201,9 +205,6 @@ def main():
 	
 	parser.add_argument('-v', '--verbose', action="store_true",
 			    help="Be verbose")
-	
-	parser.add_argument('-n', '--nocache', action="store_true",
-			    help="Disallow the program to load the episode database")
 
 	parser.add_argument('-r', '--recreatecache', action="store_true",
 			    help="Will recreate the cache from scratch, be sure you want to")
