@@ -1,92 +1,65 @@
 # author: Dan Tracy
+''' A simple vector class with basic functions'''
 
 class Vector(object):
-	def __init__(self, x=0, y=0, z=0):
-		self.__data__ = [x,y,z]
+    ''' The vector class'''
+    def __init__(self, x=0.0, y=0.0, z=0.0):
+        '''Create a new vector <x,y,z> with default values of zero'''
+        self.x = float(x)
+        self.y = float(y)
+        self.z = float(z)
 
-	def __repr__(self):
-		return "X: " + str(self[0]) + \
-			   "\tY: " + str(self[1]) + \
-			   "\tZ: " + str(self[2]) + "\n"
-	def __add__(self,vec):
-		return Vector(self[0]+vec[0], self[1]+vec[1], self[2]+vec[2])
+    def __repr__(self):
+        ''' Returns the string representation of the vector'''
+        return "X: {0}\tY: {1}\tZ: {2}".format(self.x, self.y, self.z)
+        
+    def __add__(self, vec):
+        '''Returns the sum of two vectors in a new vector
+           ex: <1,2,3> + <1,1,1> = <2,3,4>'''
+        return Vector(self.x + vec.x, self.y + vec.y, self.z + vec.z)
 
-	def __sub__(self,vec):
-		return Vector(self[0]-vec[0], self[1]-vec[1], self[2]-vec[2])
+    def __sub__(self, vec):
+        '''Returns a new vector with the difference between vectors
+           ex: <3,3,3> - <2,2,2> = <1,1,1>'''
+        return Vector(self.x - vec.x, self.y - vec.y, self.z - vec.z)
 
-	def __mul__(self,vec):
-		return Vector(self[0]*vec[0], self[1]*vec[1], self[2]*vec[2])
+    def __mul__(self, vec):
+        '''Returns a new vector with each element multiplied in position
+           ex: <2,2,2> * <2,3,4> = <4,6,8>'''
+        return Vector(self.x * vec.x, self.y * vec.y, self.z * vec.z)
 
-	def __setitem__(self, i, j):
-		try:
-			self.__data__[i] = float(j)
+    def length(self):
+        '''Returns the euclidean length of the vector'''
+        return ( self.x**2 + self.y**2 + self.z**2 ) ** (0.5)
 
-		except IndexError, ValueError:
-			pass
+    def set(self, x=0, y=0, z=0):
+        '''Updates the vector with new values'''
+        try:
+            self.x = float(x)
+            self.y = float(y)
+            self.z = float(z)
+        except ValueError:
+            pass
 
-	def __getitem__(self, i):
-		try:
-			return self.__data__[i]
-		except IndexError:
-			pass
+    def scale(self, dx, dy, dz):
+        '''Scales the vector by the values given'''
+        self.x *= dx
+        self.y *= dy
+        self.z *= dz
 
-	@property
-	def length(self):
-		return ( x**2 + y**2 + z**2 ) ** (0.5)
+    def dot(self, vec):
+        '''Returns the dot product of two vectors
+           ex: <1,2,3> o <2,2,2> = 12 '''
+        return sum(self * vec)
 
-	def set(self, x=0, y=0 ,z=0):
-		try:
-			self[0] = float(x)
-			self[1] = float(y)
-			self[2] = float(z)
-		except ValueError:
-					pass
+    def cross(self, vec):
+        ''' Returns the cross product of two vectors in a new vector
+            ex: <1,0,0> x <0,1,0> = <0,0,1> '''
+        return Vector( self.y * vec.z - self.z * vec.y, 
+                       self.z * vec.x - self.x * vec.z, 
+                       self.x * vec.y - self.y * vec.x)
 
-	def scale(self, dx, dy, dz):
-		self[0] *= dx
-		self[1] *= dy
-		self[2] *= dz
-
-	def dot(self, vec):
-		return self[0]**2 + self[1]**2 + self[2]**2
-
-	def cross(self, vec):
-		return Vector( self[1]*vec[2] - self[2]*vec[1],
-                               self[2]*vec[0] - self[0]*vec[2],
-                               self[0]*vec[1] - self[1]*vec[0])
-
-	def normalize(self):
-		l = self.length
-		self[0] /= l
-		self[1] /= l
-		self[2] /= 1
-
-	@property
-	def x(self):
-		return self[0]
-	@x.setter
-	def x(self,value):
-		try:
-			self[0] = float(value)
-		except:
-			pass
-
-	@property
-	def y(self):
-		return self[1]
-	@y.setter
-	def y(self,value):
-		try:
-			self[1] = float(value)
-		except:
-			pass
-
-	@property
-	def z(self):
-		return self[2]
-	@z.setter
-	def z(self,value):
-		try:
-			self[2] = float(value)
-		except:
-			pass
+    def normalize(self):
+        ''' Scales the vectors components such that the length is now 1'''
+        length = 1/self.length()
+        self.scale( length, length, length)
