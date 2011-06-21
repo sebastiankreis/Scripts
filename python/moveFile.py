@@ -13,7 +13,7 @@ from itertools import izip
 from collections import OrderedDict
 
 comicExt = {'zip':'cbz', 'rar':'cbr'}
-def renameExts( path = None, extensions = comicExt, recurseIntoFolders=False ):
+def renameExts( path = None, extensions = comicExt, recurseIntoFolders=False, testRun=False ):
     '''Renames the files in the path given with the dictionary of extensions'''
     if path is None or extensions is None:
         return None
@@ -30,7 +30,12 @@ def renameExts( path = None, extensions = comicExt, recurseIntoFolders=False ):
             if ext in extensions:
                 f = os.path.join(path, f)
                 name = name + '.' + extensions[ext]
-                os.rename(f, os.path.join(path, name))
+                if not testRun:
+                    try:
+                        os.rename(f, os.path.join(path, name))
+                    except Exception as ex:
+                        print ex
+                        pass
               
 
 def renameFiles( path=None, names = None, testRun=False ):
