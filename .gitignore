@@ -14,3 +14,7 @@
 .komodotools
 *.pyc
 *.apikey
+*.vcxproj
+*.vcxproj.*
+*.pdf
+*.sdf
