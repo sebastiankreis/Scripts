@@ -27,7 +27,7 @@ void plotPixel(int x, int y, unsigned char r, unsigned char g, unsigned char b);
 int main(int argc, char **argv)
 {
 	char* filename = argv[1];
-	myScene = new scene(filename);
+	myScene = new scene("SampleScenes\\test2.ray");
 
 	initGL();
 

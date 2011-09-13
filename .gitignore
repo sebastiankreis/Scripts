@@ -10,3 +10,7 @@
 *.log 
 *.DS_Store
 [Tt]humbs.db 
+*.komodoproject
+.komodotools
+*.pyc
+*.apikey
