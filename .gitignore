@@ -1,3 +1,12 @@
+libs/
+
+## Automatically Generated VS directories
+Debug/
+Doc/
+Release/
+ipch/
+
+
 *.db
 *.o
 [Oo]bj
@@ -16,5 +25,10 @@
 *.apikey
 *.vcxproj
 *.vcxproj.*
+*.vcproj
 *.pdf
 *.sdf
+*.lib
+*.jpg
+*.sln
+*.png

@@ -91,7 +91,6 @@ void InitGL ( GLvoid )
 	glLoadIdentity();
 	gluPerspective(100.0f, (float)WINDOW_WIDTH/(float)WINDOW_HEIGHT, 0.1f, 2000.0f);
 	glMatrixMode(GL_MODELVIEW);
-	//glLoadIdentity();
 
 	//call our function to load a texture (you will have to do this for each texture you will load)
 	loadTexture("texture/front.jpg",frontTextureId);
@@ -105,8 +104,9 @@ void InitGL ( GLvoid )
 }
 
 void renderSkybox(void)
-{	
-	static GLfloat r = 300.0f;
+{	static GLfloat r = 2000.0f;
+
+	glDisable(GL_LIGHTING);
 
 	glLoadIdentity();
 
@@ -116,6 +116,8 @@ void renderSkybox(void)
  
 	glTranslatef(0.0f, 0.0f, 0.0f);
 
+	glRotatef(currentCameraCoord[0]/1.5,0,1,0);
+	glRotatef(currentCameraCoord[1]/1.5,1,0,0);
 	glEnable(GL_TEXTURE_2D);
 	
 	// Render the front texture
@@ -155,7 +157,7 @@ void renderSkybox(void)
 	glEnd();
 
 	// Render the right quad
-	glBindTexture(GL_TEXTURE_2D, leftTextureId);
+	glBindTexture(GL_TEXTURE_2D, rightTextureId);
     glBegin(GL_QUADS);
        glTexCoord2f(0.0, 1.0); glVertex3f( r, -r, -r );
        glTexCoord2f(1.0, 1.0); glVertex3f( r, -r, r );
@@ -163,7 +165,7 @@ void renderSkybox(void)
        glTexCoord2f(0.0, 0.0); glVertex3f( r, r, -r );
 	glEnd();
 
-	glBindTexture(GL_TEXTURE_2D, rightTextureId);
+	glBindTexture(GL_TEXTURE_2D, leftTextureId);
     glBegin(GL_QUADS);
        glTexCoord2f(0.0, 1.0); glVertex3f( -r, -r, -r );
        glTexCoord2f(1.0, 1.0); glVertex3f( -r, -r, r );
@@ -173,15 +175,16 @@ void renderSkybox(void)
 
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
+	glEnable(GL_LIGHTING);
 }
 
-void renderHeightMap()
+void renderHeightmap()
 {
-	glTranslatef(currentTranslation[0]-50.0f,currentTranslation[1],-currentTranslation[2]);
+	glTranslatef(currentTranslation[0]-50.0f,-currentTranslation[1],-currentTranslation[2]);
 	glRotatef(-30.0f, currentRotation[0], currentRotation[1], currentRotation[2]);
 	glScalef(currentScaling[0], currentScaling[1], currentScaling[2]);
-
-	glBegin(GL_TRIANGLE_STRIP);
+	
+	glBegin(GL_POINTS);
 	
 	for(int x = 0; x < (sourceImage->nx); ++x)
 	{
@@ -192,37 +195,36 @@ void renderHeightMap()
 			int blue = PIC_PIXEL(sourceImage , x, y, 2);
 			int z = (red+green+blue)/32;
 
-			glColor3f(x/5,y/5,z/5);
-
-			glTexCoord2d(1,1); glVertex3f(x+1.0f,y+1.0f,z); // Top Right
-			glTexCoord2d(0,1); glVertex3f(x-1.0f,y+1.0f,z); // Top Left
-			glTexCoord2d(1,0); glVertex3f(x+1.0f,y-1.0f,z); // Bottom Right
-			glTexCoord2d(0,0); glVertex3f(x-1.0f,y-1.0f,z); // Bottom Left
+			glColor3f(0,1,0);
+			glVertex3f(x, z, y); 
 			
 		}
 	}
 	glEnd();
 }
 
-void camera (void) 
-{
-	glRotatef(currentCameraRotation[0], 1.0f, 0.0f, 0.0f);  
-    glRotatef(currentCameraRotation[1], 0.0f, 1.0f, 0.0f);  
-    glTranslated(-currentCameraCoord[0], -currentCameraCoord[1], -currentCameraCoord[2]); 
-	
-}
 
 void display ( void )   // Create The Display Function
 {
 	glLoadIdentity();
-	
-	/* Clear buffers */
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	renderSkybox();
-	renderHeightMap();
-	camera();
+	glViewport(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);			
 
+	glMatrixMode(GL_PROJECTION);					
+	glLoadIdentity();									
+
+	gluPerspective(100.0f,(GLfloat)WINDOW_WIDTH/(GLfloat)WINDOW_HEIGHT,0.1f,5000.0f);
+
+	glMatrixMode(GL_MODELVIEW);
+
+	glLoadIdentity();
+	glTranslatef(0.5f,-2.0f,0.0f);
+	
+	gluLookAt(mousePos[0],mousePos[1],0,0,0,0,0,1,0);
+	
+	renderSkybox();
+	renderHeightmap();
 	glutSwapBuffers();
 }
 
@@ -274,7 +276,7 @@ void mousedrag(int x, int y)
       if (leftMouseButtonState)
       {
         currentTranslation[0] += mousePosChange[0]*0.1;
-        currentTranslation[1] -= mousePosChange[1]*0.1;
+        currentTranslation[1] += mousePosChange[1]*0.1;
       }
       if (middleMouseButtonState)
       {
@@ -315,13 +317,16 @@ void mousedrag(int x, int y)
 void mouseidle(int x, int y)
 {
   int diffx = x - mousePos[0]; //check the difference between the current x and the last x position
-  int diffy = y - mousePos[0]; //check the difference between the current y and the last y position
+  int diffy = y - mousePos[1]; //check the difference between the current y and the last y position
 
   mousePos[0] = x;
   mousePos[1] = y;
 
   currentCameraRotation[0] += (float) diffy; //set the xrot to xrot with the addition of the difference in the y position
   currentCameraRotation[1] += (float) diffx;// set the xrot to yrot with the addition of the difference in the x position
+
+   currentCameraCoord[0] = x;
+   currentCameraCoord[1] = y;
 }
 
 
