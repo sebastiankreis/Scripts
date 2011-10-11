@@ -1,0 +1,42 @@
+Dan Tracy
+Project 5 Readme
+
+I have worked on this project by myself.  Currently it runs fairly well.  All of the necessary options
+work properly.  The program will automatically start in non-verbose non-interactive mode and will read
+any files passed to it through the command line or through a pipe.  Within the file you will find 8 
+source files and a Makefile as well as this readme.  
+
+The files are pr5.c and pr5.h which contains the main function and largely just parses the command line
+options and reads input.
+
+The pr_table.c and pr_table.h files contain the linked list implementation as well as some functions to 
+add, delete, and initalize the list.  There is also a function that will return the pid of the current
+foreground process.  The main bug with the linked list is that after a new process is forked the pid
+is properly inserted into the process table like it should.  The problem lies when the function returns
+to the calling function, which is execute_line in the parse.c file.  After the function returns and the
+execute_line function returns to the main loop the process is not located within the process table if you
+were to type in pjobs.  I do not know why it does this and i have no idea how to go about fixing it.
+
+The pr_parse.c and pr_parse.h files are where i spent the majority of my time.  These files take the line
+of input from the main function, tokenize it, fork a new child and pass it to the execvp function.  The 
+majority of the work is done here.  Everything works properly like it should, still the only bug is when
+the pid is inserted into the table.  If you enable verbose mode you will see after fork is called the 
+process appears to be in the table, but if you run pjobs then the pid is nowhere to be found.
+
+The pr_signal.c and pr_signal.h files just contain the signal installation function as well as some 
+signal handler for the SIGCHLD and SIGINT signals.
+
+The pr5.h file contains all of the macros used by the program.
+
+--------------------------------------------------------------------------------------------------------------
+
+The majority of my time was spent trying to get the parse file to work properly.  The first main obstacle was
+getting the line properly tokenized.  After that getting the execv function to work properly was my next hurdle.
+After that i focued on forking and updating the process table.  After all that the last thing i focused on was 
+the builtin functions, which took the least amount of time.  Beside the parse file the other file that took the
+majority of my time was the pr5.c file itself.  Getting the program to run in interactive mode, read from a file
+or from the standard input, as well as several other things took a little more time than i have previously 
+anticipated.  The signal and ptable files were pretty much the same as i have used from Homework 4.  Overall I 
+really enjoyed this project, i found it very challanging.
+
+

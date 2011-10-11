@@ -1,0 +1,10 @@
+echo Welcome to pr5.init
+echo
+ls
+chdir ..
+dir
+cdir ..
+dir
+pjobs
+sleep 10
+exit

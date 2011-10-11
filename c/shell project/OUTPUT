@@ -1,0 +1,396 @@
+----------------------------------------------------------
+TEST 1 - Test Help option
+----------------------------------------------------------
+dan@dan-laptop:~/Sources/C/Homework5$ ./pr5 -i -v -d -h
+Usage: ./pr5 [-h] [-i] [-v] [-e] [-s f] file1 file2 ....
+    -h      help
+    -i      interactive mode
+    -v      verbose mode
+    -d      debug mode
+    -e      echo commands before execution
+    -s f    use startup file f, default pr5.init
+    -w f    write commands inputted to file f
+    -r      writes commands to default file [pr5.history]
+
+--------------------------------------------------------
+TEST 2 - Test interactive/verbose/debug/write modes
+--------------------------------------------------------
+dan@dan-laptop:~/Sources/C/Homework5$ ./pr5 -i -v -d -r
+  process table, printed by pt_init
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+dan%[1]: parse Message: Argument = echo
+parse Message: Arg Count= 4
+ Welcome to pr5.init
+Parse Exit Status 0
+dan%[2]: parse Message: Argument = echo
+parse Message: Arg Count= 1
+
+Parse Exit Status 0
+
+dan%[1]: ls
+parse Message: Argument = ls
+parse Message: Arg Count= 1
+execute_line Message: Creating child process for ls
+execute_line Message: Adding ls to process table
+  process table, printed by execute_line
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+   17635      10778      running   0x00000000      BG
+execute_line message: Updating PID = 17635
+
+a.out	Makefile   parse.c~  pr5.c   pr5.h~	  pr5.init~		pr_parse.c~  pr_signal.c   pr_signal.h~  pr_table.h  README
+file~	Makefile~  parse.h~  pr5.c~  pr5.history  project-5-dan.tar.gz	pr_parse.h   pr_signal.c~  pr_table.c	 ptable.c~   README~
+file2~	Makefle~   pr5	     pr5.h   pr5.init	  pr_parse.c		pr_parse.h~  pr_signal.h   pr_table.c~	 ptable.h~
+
+SIGCHLD_handler Message: Child Signal Received
+Parse Exit Status 0
+dan%[2]: chdir ..
+parse Message: Argument = chdir
+parse Message: Arg Count= 2
+execute_line Message: Creating child process for chdir
+execute_line Message: Adding chdir to process table
+  process table, printed by execute_line
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+   17650      10778      running   0x00000000      BG
+execute_line message: Updating PID = 17650
+
+chdir: failed: No such file or directory
+
+SIGCHLD_handler Message: Child Signal Received
+Parse Exit Status 256
+dan%[3]: dir
+parse Message: Argument = dir
+parse Message: Arg Count= 1
+/home/dan/Sources/C/Homework5
+Parse Exit Status 0
+dan%[4]: cdir ..
+parse Message: Argument = cdir
+parse Message: Arg Count= 2
+/home/dan/Sources/C
+Parse Exit Status 0
+dan%[5]: dir
+parse Message: Argument = dir
+parse Message: Arg Count= 1
+/home/dan/Sources/C
+Parse Exit Status 0
+dan%[6]: pjobs
+parse Message: Argument = pjobs
+parse Message: Arg Count= 1
+  process table, printed by Running Processes
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+Parse Exit Status 0
+dan%[7]: sleep 10
+parse Message: Argument = sleep
+parse Message: Arg Count= 2
+execute_line Message: Creating child process for sleep
+execute_line Message: Adding sleep to process table
+  process table, printed by execute_line
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+   17651      10778      running   0x00000000      BG
+execute_line message: Updating PID = 17651
+
+
+SIGCHLD_handler Message: Child Signal Received
+Parse Exit Status 0
+dan%[8]: exit
+parse Message: Argument = exit
+parse Message: Arg Count= 1
+dan@dan-laptop:~/Sources/C/Homework5$ 
+
+
+-------------------------------------------------------------
+Test 3 Non interactive
+-------------------------------------------------------------
+dan@dan-laptop:~/Sources/C/Homework5$ ./pr5 
+ Welcome to pr5.init
+
+
+dan@dan-laptop:~/Sources/C/Homework5$ 
+
+-------------------------------------------------------------
+Test 3 Non Interactive with stdin
+-------------------------------------------------------------
+dan@dan-laptop:~/Sources/C/Homework5$ cat file~ | ./pr5 -
+ Welcome to pr5.init
+
+
+ Hello World
+  process table, printed by Running Processes
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+total 204
+drwxr-xr-x 2 dan  4096 2009-11-20 02:48 .
+drwxr-xr-x 7 dan  4096 2009-11-15 23:02 ..
+-rwxr-xr-x 1 dan 25666 2009-11-20 02:21 a.out
+-rw-r--r-- 1 dan    30 2009-11-19 17:03 file~
+-rw-r--r-- 1 dan    39 2009-11-19 22:15 file2~
+-rw-r--r-- 1 dan   337 2009-11-20 02:04 Makefile
+-rw-r--r-- 1 dan   309 2009-11-20 02:03 Makefile~
+-rw-r--r-- 1 dan   177 2009-11-17 01:46 Makefle~
+-rw-r--r-- 1 dan     0 2009-11-20 02:45 OUTPUT
+-rw-r--r-- 1 dan  2555 2009-11-17 17:24 parse.c~
+-rw-r--r-- 1 dan   476 2009-11-18 17:01 parse.h~
+-rwxr-xr-x 1 dan 25770 2009-11-20 02:48 pr5
+-rw-r--r-- 1 dan  4731 2009-11-20 02:48 pr5.c
+-rw-r--r-- 1 dan  4714 2009-11-20 02:41 pr5.c~
+-rw-r--r-- 1 dan   808 2009-11-20 01:54 pr5.h
+-rw-r--r-- 1 dan   702 2009-11-20 00:41 pr5.h~
+-rw-r--r-- 1 dan    78 2009-11-20 02:43 pr5.history
+-rw-r--r-- 1 dan    25 2009-11-20 02:48 pr5.init
+-rw-r--r-- 1 dan    28 2009-11-19 22:16 pr5.init~
+-rw-r--r-- 1 dan  5681 2009-11-20 02:06 project-5-dan.tar.gz
+-rw-r--r-- 1 dan  5496 2009-11-20 01:53 pr_parse.c
+-rw-r--r-- 1 dan  5379 2009-11-20 01:52 pr_parse.c~
+-rw-r--r-- 1 dan   380 2009-11-19 23:58 pr_parse.h
+-rw-r--r-- 1 dan   562 2009-11-19 23:09 pr_parse.h~
+-rw-r--r-- 1 dan  1607 2009-11-20 00:41 pr_signal.c
+-rw-r--r-- 1 dan  1607 2009-11-19 23:58 pr_signal.c~
+-rw-r--r-- 1 dan   528 2009-11-17 17:33 pr_signal.h
+-rw-r--r-- 1 dan   549 2009-11-17 17:32 pr_signal.h~
+-rw-r--r-- 1 dan  3348 2009-11-20 01:43 pr_table.c
+-rw-r--r-- 1 dan  3362 2009-11-20 01:42 pr_table.c~
+-rw-r--r-- 1 dan   894 2009-11-18 17:01 pr_table.h
+-rw-r--r-- 1 dan  3341 2009-11-17 17:56 ptable.c~
+-rw-r--r-- 1 dan   890 2009-11-17 16:04 ptable.h~
+-rw-r--r-- 1 dan  2928 2009-11-20 02:23 README
+-rw-r--r-- 1 dan  2928 2009-11-20 02:20 README~
+a.out	Makefile   OUTPUT    pr5     pr5.h	  pr5.init		pr_parse.c   pr_parse.h~   pr_signal.h	 pr_table.c~  ptable.h~
+file~	Makefile~  parse.c~  pr5.c   pr5.h~	  pr5.init~		pr_parse.c~  pr_signal.c   pr_signal.h~  pr_table.h   README
+file2~	Makefle~   parse.h~  pr5.c~  pr5.history  project-5-dan.tar.gz	pr_parse.h   pr_signal.c~  pr_table.c	 ptable.c~    README~
+
+
+-----------------------------------------------------
+Test 4 Interactive with Verbose Mode
+-----------------------------------------------------
+dan@dan-laptop:~/Sources/C/Homework5$ ./pr5 -i -v
+dan%[1]: parse Message: Argument = echo
+ Welcome to pr5.init
+dan%[2]: parse Message: Argument = echo
+
+
+dan%[1]: help
+parse Message: Argument = help
+Help Command Listing
+--------------------
+exit                 -- Exits the shell
+quit                 -- Exits the shell
+pjobs                -- Prints Active Jobs, Shell is always first
+echo                 -- Prints whatever is on the command line
+dir                  -- Prints the current working directory
+cdir [path]          -- Changes the directory to path
+setenv [var=val]     -- Sets var = val
+penv                 -- Prints all environment variables
+unsetenv [var]       -- Unsets var
+set debug [on|off]   -- Sets debug mode on or off
+set verbose[on|off]  -- Sets verbose mode on or off
+help                 -- Prints this message
+dan%[2]: setenv DAN=1000
+parse Message: Argument = setenv
+dan%[3]: penv
+parse Message: Argument = penv
+ORBIT_SOCKETDIR=/tmp/orbit-dan
+SSH_AGENT_PID=2075
+GPG_AGENT_INFO=/tmp/seahorse-ij43Oi/S.gpg-agent:2100:1
+TERM=xterm
+SHELL=/bin/bash
+XDG_SESSION_COOKIE=3cf403c23e6240b62a47f51d4a32896a-1258662684.219498-673531978
+GTK_RC_FILES=/etc/gtk/gtkrc:/home/dan/.gtkrc-1.2-gnome2
+WINDOWID=71303173
+GTK_MODULES=canberra-gtk-module
+USER=dan
+LS_COLORS=rs=0:di=01;34:ln=01;36:hl=44;37:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:
+GNOME_KEYRING_SOCKET=/tmp/keyring-80AcBp/socket
+SSH_AUTH_SOCK=/tmp/keyring-80AcBp/socket.ssh
+SESSION_MANAGER=local/dan-laptop:@/tmp/.ICE-unix/2033,unix/dan-laptop:/tmp/.ICE-unix/2033
+USERNAME=dan
+DESKTOP_SESSION=gnome
+LIBGL_ALWAYS_INDIRECT=1
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+PWD=/home/dan/Sources/C/Homework5
+GDM_KEYBOARD_LAYOUT=us
+FROM_WRAPPER=yes
+LANG=en_US.UTF-8
+GNOME_KEYRING_PID=2018
+GDM_LANG=en_US.UTF-8
+GDMSESSION=gnome
+HISTCONTROL=ignoreboth
+SPEECHD_PORT=7560
+SHLVL=1
+HOME=/home/dan
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LOGNAME=dan
+XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-e1Xm3QfmWu,guid=0936adf599cb34a8c4ccad144b05ab1c
+LESSOPEN=| /usr/bin/lesspipe %s
+DISPLAY=:0.0
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XAUTHORITY=/var/run/gdm/auth-for-dan-a3f0tj/database
+COLORTERM=gnome-terminal
+OLDPWD=/home/dan
+_=./pr5
+DAN=1000
+dan%[4]: unsetenv DAN
+parse Message: Argument = unsetenv
+dan%[5]: penv
+parse Message: Argument = penv
+ORBIT_SOCKETDIR=/tmp/orbit-dan
+SSH_AGENT_PID=2075
+GPG_AGENT_INFO=/tmp/seahorse-ij43Oi/S.gpg-agent:2100:1
+TERM=xterm
+SHELL=/bin/bash
+XDG_SESSION_COOKIE=3cf403c23e6240b62a47f51d4a32896a-1258662684.219498-673531978
+GTK_RC_FILES=/etc/gtk/gtkrc:/home/dan/.gtkrc-1.2-gnome2
+WINDOWID=71303173
+GTK_MODULES=canberra-gtk-module
+USER=dan
+LS_COLORS=rs=0:di=01;34:ln=01;36:hl=44;37:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:
+GNOME_KEYRING_SOCKET=/tmp/keyring-80AcBp/socket
+SSH_AUTH_SOCK=/tmp/keyring-80AcBp/socket.ssh
+SESSION_MANAGER=local/dan-laptop:@/tmp/.ICE-unix/2033,unix/dan-laptop:/tmp/.ICE-unix/2033
+USERNAME=dan
+DESKTOP_SESSION=gnome
+LIBGL_ALWAYS_INDIRECT=1
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+PWD=/home/dan/Sources/C/Homework5
+GDM_KEYBOARD_LAYOUT=us
+FROM_WRAPPER=yes
+LANG=en_US.UTF-8
+GNOME_KEYRING_PID=2018
+GDM_LANG=en_US.UTF-8
+GDMSESSION=gnome
+HISTCONTROL=ignoreboth
+SPEECHD_PORT=7560
+SHLVL=1
+HOME=/home/dan
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LOGNAME=dan
+XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-e1Xm3QfmWu,guid=0936adf599cb34a8c4ccad144b05ab1c
+LESSOPEN=| /usr/bin/lesspipe %s
+DISPLAY=:0.0
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XAUTHORITY=/var/run/gdm/auth-for-dan-a3f0tj/database
+COLORTERM=gnome-terminal
+OLDPWD=/home/dan
+_=./pr5
+v
+dan%[6]: exit
+parse Message: Argument = exit
+dan@dan-laptop:~/Sources/C/Homework5$ 
+
+------------------------------------------------------------
+Test 5 Interactive, try toggling debug and verbose
+------------------------------------------------------------
+dan@dan-laptop:~/Sources/C/Homework5$ ./pr5 -i
+dan%[1]:  Welcome to pr5.init
+dan%[2]: 
+
+dan%[1]: set verbose 2
+Please specify either on[1] or off[0]
+dan%[2]: set verbose 1
+dan%[3]: ls
+parse Message: Argument = ls
+execute_line Message: Creating child process for ls
+  process table, printed by execute_line
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+   18771      10778      running   0x00000000      BG
+a.out	Makefile   OUTPUT    parse.h~  pr5.c~  pr5.history  project-5-dan.tar.gz  pr_parse.h   pr_signal.c~  pr_table.c   ptable.c~  README~
+file~	Makefile~  OUTPUT~   pr5       pr5.h   pr5.init     pr_parse.c		  pr_parse.h~  pr_signal.h   pr_table.c~  ptable.h~
+file2~	Makefle~   parse.c~  pr5.c     pr5.h~  pr5.init~    pr_parse.c~		  pr_signal.c  pr_signal.h~  pr_table.h   README
+
+SIGCHLD_handler Message: Child Signal Received
+dan%[4]: set verbose 0
+parse Message: Argument = set
+dan%[5]: set debug 1
+Parse Exit Status 0
+dan%[6]: ls
+parse Message: Argument = ls
+parse Message: Arg Count= 1
+execute_line Message: Creating child process for ls
+execute_line Message: Adding ls to process table
+  process table, printed by execute_line
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+   18772      10778      running   0x00000000      BG
+execute_line message: Updating PID = 18772
+
+a.out	Makefile   OUTPUT    parse.h~  pr5.c~  pr5.history  project-5-dan.tar.gz  pr_parse.h   pr_signal.c~  pr_table.c   ptable.c~  README~
+file~	Makefile~  OUTPUT~   pr5       pr5.h   pr5.init     pr_parse.c		  pr_parse.h~  pr_signal.h   pr_table.c~  ptable.h~
+file2~	Makefle~   parse.c~  pr5.c     pr5.h~  pr5.init~    pr_parse.c~		  pr_signal.c  pr_signal.h~  pr_table.h   README
+
+SIGCHLD_handler Message: Child Signal Received
+Parse Exit Status 0
+dan%[7]: exit
+parse Message: Argument = exit
+parse Message: Arg Count= 1
+dan@dan-laptop:~/Sources/C/Homework5$ 
+
+
+---------------------------------------------------
+Test 6
+---------------------------------------------------
+dan@dan-laptop:~/Sources/C/Homework5$ ./pr5 -i -v -d
+  process table, printed by pt_init
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+dan%[1]: parse Message: Argument = echo
+parse Message: Arg Count= 4
+ Welcome to pr5.init
+Parse Exit Status 0
+dan%[2]: parse Message: Argument = echo
+parse Message: Arg Count= 1
+
+Parse Exit Status 0
+
+dan%[1]: sleep 10
+parse Message: Argument = sleep
+parse Message: Arg Count= 2
+execute_line Message: Creating child process for sleep
+execute_line Message: Adding sleep to process table
+  process table, printed by execute_line
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+   18788      10778      running   0x00000000      BG
+execute_line message: Updating PID = 18788
+
+
+SIGCHLD_handler Message: Child Signal Received
+Parse Exit Status 0
+dan%[2]: 
+dan%[2]: pjobs
+parse Message: Argument = pjobs
+parse Message: Arg Count= 1
+  process table, printed by Running Processes
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+Parse Exit Status 0
+dan%[3]: sleep 10 &
+parse Message: Background enabled for sleep
+parse Message: Argument = sleep
+parse Message: Arg Count= 2
+execute_line Message: Creating child process for sleep
+execute_line Message: Adding sleep to process table
+  process table, printed by execute_line
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+   18795      10778      running   0x00000000      FG
+execute_line message: Updating PID = 18795
+
+
+execute_line Message: pid = 18795
+ process sleep - executed in background
+Parse Exit Status 0
+dan%[4]: pjobs
+parse Message: Argument = pjobs
+parse Message: Arg Count= 1
+  process table, printed by Running Processes
+    pid     parent_pid     state   status         BG/FG
+   10778          0         none   0x00000000      BG
+Parse Exit Status 0
+dan%[5]: 
+SIGCHLD_handler Message: Child Signal Received
