@@ -1,4 +1,5 @@
 libs/
+lib/
 
 ## Automatically Generated VS directories
 Debug/
@@ -14,6 +15,11 @@ ipch/
 ## Komodo Stuff
 *.komodoproject
 .komodotools
+
+## Python Virtualenv stuff
+Libs\
+Include\
+Scripts\
 
 *.db
 *.o
