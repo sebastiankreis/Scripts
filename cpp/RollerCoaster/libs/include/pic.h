@@ -20,9 +20,6 @@ extern "C" {
 #  else
 #     define SUFFIXD ""
 #  endif
-#  if defined (_DEBUG) && defined(_DLL)
-#     error Multithreaded Debug DLL (/MDd) configuration not supported. Choose C/C++/Code generation/Runtime Library=Multithreaded Debug (/MTd)
-#  endif
 #  if defined (_DLL)
 #     define SUFFIXL "-msvcrtdll"
 #  else
