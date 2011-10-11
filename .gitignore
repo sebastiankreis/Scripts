@@ -5,30 +5,34 @@ Debug/
 Doc/
 Release/
 ipch/
+*.vcxproj
+*.vcxproj.*
+*.vcproj
+*.sln
+*.suo
 
+## Komodo Stuff
+*.komodoproject
+.komodotools
 
 *.db
 *.o
 [Oo]bj
 [Bb]in
 *.user
-*.suo
 *.[Cc]ache
 *.bak
 *.ncb
 *.log 
 *.DS_Store
 [Tt]humbs.db 
-*.komodoproject
-.komodotools
 *.pyc
 *.apikey
-*.vcxproj
-*.vcxproj.*
-*.vcproj
 *.pdf
 *.sdf
 *.lib
 *.jpg
-*.sln
 *.png
+*.tar
+*.gz
+*~
