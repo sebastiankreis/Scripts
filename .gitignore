@@ -11,16 +11,20 @@ ipch/
 *.vcproj
 *.sln
 *.suo
+*.sdf
 
 ## Komodo Stuff
 *.komodoproject
 .komodotools
 
 ## Python Virtualenv stuff
-Libs\
-Include\
-Scripts\
+Libs/
+Include/
+Scripts/
 
+*.img
+*.bak
+*.log
 *.db
 *.o
 [Oo]bj

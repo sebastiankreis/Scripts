@@ -1,4 +1,4 @@
-//Dan Tracy
+//
 #ifdef WIN32
 #include <windows.h>
 #endif
@@ -11,6 +11,7 @@
 #include <GL/glut.h>   // The GL Utility Toolkit (Glut) Header
 #include <pic.h>
 #include "rc_spline.h"
+#include <iostream>
 
 rc_Spline g_Track;
 
@@ -29,7 +30,7 @@ const GLfloat maxSpeed = 100;
 GLfloat maxHeight;
 GLfloat cameraMass = 50;
 GLfloat cameraSpeed = 100;
-GLfloat catmullIncrement = 0.1;
+GLfloat catmullIncrement = 0.01f;
 GLfloat timeIncrement = 1;
 GLfloat time = 0;
 
@@ -45,7 +46,7 @@ Vec3f mousePos (0.0f,0.0f,0.0f);
 Vec3f cameraPos (0.0f, 0.0f, 0.0f);
 Vec3f nextPos(0.0f,0.0f,0.0f);
 Vec3f trueUp(0.0f,0.0f,0.0f);
-Vec3f globalUp(0.0f, 1.0f, 0.0f);
+Vec3f globalUp(0.0f, 0.0f, 1.0f);
 
 /* OpenGL callback declarations 
 definitions are at the end to avoid clutter */
@@ -219,7 +220,7 @@ void InitGL ( GLvoid )
 		{
 			Vec3f temp = catmull(ptA,ptB,ptC,ptD,t);	
 			pos += temp;
-			if(pos.y() > maxHeight) maxHeight = pos.y();
+			//if(pos.y() > maxHeight) maxHeight = pos.y();
 			catmullPoints.push_back(pos);
 
 			t += catmullIncrement;
@@ -228,6 +229,7 @@ void InitGL ( GLvoid )
 		if(index>2)
 			++itr;
 	}
+
 
 	// Draw the points in displayList and setup lighting and materialfv
 	GLfloat reflection[] = { 0.8f, 0.8f, 0.8f, 1.0f };
@@ -258,8 +260,6 @@ void InitGL ( GLvoid )
 
 		glVertex3f( pos.x(), pos.y()+1, pos.z() );
 		glTexCoord2d(0,1);
-
-		
 	}
 
 	glEnd();
@@ -284,7 +284,7 @@ void display ( void )
 	glLoadIdentity();
 	glTranslatef(0.5f,-2.0f,0.0f);
 	
-	//gluLookAt(mousePos[0],mousePos[1],0,0,0,0,0,1,0);
+	//gluLookAt(cameraPos[0],cameraPos[1],cameraPos[2],0,0,0,0,1,0);
 	gluLookAt(cameraPos[0],cameraPos[1],cameraPos[2],
 			  nextPos[0],nextPos[1],nextPos[2],
 			  trueUp[0],trueUp[1],trueUp[2]);
@@ -307,11 +307,16 @@ void cameraCallback(int junk)
 	//but for now im still trying to figure out how to stop it from flipping
 	//index = physics(*itr,index);
 	cameraPos = *itr;
+	
 	((itr + 1) == catmullPoints.end()) ? (itr=catmullPoints.begin()) : itr+=1;
 	nextPos = *itr;
+
 	Vec3f rightVec;
-	rightVec.Cross3(rightVec, nextPos,globalUp);
+	rightVec.Cross3(rightVec, globalUp, (nextPos-cameraPos) );
+	rightVec.Normalize();
+
 	trueUp.Cross3(trueUp, rightVec, nextPos);
+	trueUp.Normalize();
  
 	time += timeIncrement;
 
@@ -341,9 +346,13 @@ void keyboardfunc (unsigned char key, int x, int y) {
 	if(key == 's' || key == 'S')
 		cameraPos.Set( cameraPos[0] - 1, cameraPos[1], cameraPos[2] );
 	if(key == 'a' || key == 'A')
-		cameraPos.Set( cameraPos[0], cameraPos[1], cameraPos[2] + 1 );
+		cameraPos.Set( cameraPos[0], cameraPos[1] +1, cameraPos[2] );
 	if(key == 'd' || key == 'D')
-		cameraPos.Set( cameraPos[0], cameraPos[1], cameraPos[2] - 1 );
+		cameraPos.Set( cameraPos[0], cameraPos[1] -1, cameraPos[2] );
+	if(key == 'r' || key == 'R')
+		cameraPos.Set( cameraPos[0], cameraPos[1] , cameraPos[2]-1 );
+	if(key == 'e' || key == 'E')
+		cameraPos.Set( cameraPos[0], cameraPos[1] , cameraPos[2]+1 );
 	if(key == 'q' || key == 'Q' || key == 27) {
 		exit(0);
 	}
@@ -392,69 +401,75 @@ void renderSkybox(void)
  
 	glTranslatef(0.0f, 0.0f, 0.0f);
 
-	//glRotatef(mousePos[0],0,1,0);
-	//glRotatef(mousePos[1],1,0,0);
-
+	glBindTexture(GL_TEXTURE_2D,frontTextureId); // select which texture to use 
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP);
+	
 	glRotatef(cameraPos[0],0,1,0);
 	glRotatef(cameraPos[1],1,0,0);
-	glEnable(GL_TEXTURE_2D);
-	
-	// Render the front texture
-	glBindTexture(GL_TEXTURE_2D, frontTextureId);
 	glBegin(GL_QUADS);
-		glTexCoord2f(1.0, 0.0);	glVertex3f( r, r, -r); 
-		glTexCoord2f(0.0, 0.0);	glVertex3f(-r, r, -r);
-		glTexCoord2f(0.0, 1.0); glVertex3f(-r, -r,-r);
-		glTexCoord2f(1.0, 1.0); glVertex3f( r, -r,-r);
-	glEnd();
-
-	// Render the back texture
-	glBindTexture(GL_TEXTURE_2D, backTextureId);
-	glBegin(GL_QUADS);
-		glTexCoord2f(1.0, 0.0);	glVertex3f( r, r, r); 
-		glTexCoord2f(0.0, 0.0);	glVertex3f(-r, r, r);
-		glTexCoord2f(0.0, 1.0); glVertex3f(-r, -r,r);
-		glTexCoord2f(1.0, 1.0); glVertex3f( r, -r,r);
-	glEnd();
 	
-   // Render the top quad
-   glBindTexture(GL_TEXTURE_2D, topTextureId);
-   glBegin(GL_QUADS);
-       glTexCoord2f(0.0, 1.0); glVertex3f( -r, r, -r );
-       glTexCoord2f(1.0, 1.0); glVertex3f( r, r, -r );
-       glTexCoord2f(1.0, 0.0); glVertex3f( r, r, r );
-       glTexCoord2f(0.0, 0.0); glVertex3f( -r, r, r );
+	//set color
+	glColor3f(1.0, 1.0, 1.0);
+	
+	//* Set the texture coordinates */
+	glTexCoord2f(0, 0); glVertex3f(  r, -r, -r );
+	glTexCoord2f(1, 0); glVertex3f( -r, -r, -r );
+	glTexCoord2f(1, 1); glVertex3f( -r,  r, -r );
+	glTexCoord2f(0, 1); glVertex3f(  r,  r, -r );
+
+  //* End the object */
 	glEnd();
 
-	// Render the bottom quad
-   glBindTexture(GL_TEXTURE_2D, bottomTextureId);
-   glBegin(GL_QUADS);
-       glTexCoord2f(0.0, 1.0); glVertex3f( -r, -r, -r );
-       glTexCoord2f(1.0, 1.0); glVertex3f( r, -r, -r );
-       glTexCoord2f(1.0, 0.0); glVertex3f( r, -r, r );
-       glTexCoord2f(0.0, 0.0); glVertex3f( -r, -r, r );
+    glBindTexture(GL_TEXTURE_2D,leftTextureId); // select which texture to use 
+	glBegin(GL_QUADS);
+	glColor3f(1.0, 1.0, 1.0);
+	
+	glTexCoord2f(0, 0); glVertex3f(  r, -r,  r );
+	glTexCoord2f(1, 0); glVertex3f(  r, -r, -r );
+	glTexCoord2f(1, 1); glVertex3f(  r,  r, -r );
+	glTexCoord2f(0, 1); glVertex3f(  r,  r,  r );
 	glEnd();
 
-	// Render the right quad
-	glBindTexture(GL_TEXTURE_2D, rightTextureId);
-    glBegin(GL_QUADS);
-       glTexCoord2f(0.0, 1.0); glVertex3f( r, -r, -r );
-       glTexCoord2f(1.0, 1.0); glVertex3f( r, -r, r );
-       glTexCoord2f(1.0, 0.0); glVertex3f( r, r, r );
-       glTexCoord2f(0.0, 0.0); glVertex3f( r, r, -r );
+    glBindTexture(GL_TEXTURE_2D,backTextureId); // select which texture to use 
+	glBegin(GL_QUADS);
+	glColor3f(1.0, 1.0, 1.0);
+	glTexCoord2f(0, 0); glVertex3f( -r, -r,  r );
+	glTexCoord2f(1, 0); glVertex3f(  r, -r,  r );
+	glTexCoord2f(1, 1); glVertex3f(  r,  r,  r );
+	glTexCoord2f(0, 1); glVertex3f( -r,  r,  r );
 	glEnd();
 
-	glBindTexture(GL_TEXTURE_2D, leftTextureId);
-    glBegin(GL_QUADS);
-       glTexCoord2f(0.0, 1.0); glVertex3f( -r, -r, -r );
-       glTexCoord2f(1.0, 1.0); glVertex3f( -r, -r, r );
-       glTexCoord2f(1.0, 0.0); glVertex3f( -r, r, r );
-       glTexCoord2f(0.0, 0.0); glVertex3f( -r, r, -r );
-	glEnd();
+     glBindTexture(GL_TEXTURE_2D,rightTextureId); // select which texture to use 
+	 glBegin(GL_QUADS);
+	 glColor3f(1.0, 1.0, 1.0);
+	 glTexCoord2f(0, 0); glVertex3f( -r, -r, -r );
+	 glTexCoord2f(1, 0); glVertex3f( -r, -r,  r );
+	 glTexCoord2f(1, 1); glVertex3f( -r,  r,  r );
+	 glTexCoord2f(0, 1); glVertex3f( -r,  r, -r );
+	 glEnd();
+     
+	 glBindTexture(GL_TEXTURE_2D,topTextureId); // select which texture to use 
+	 glBegin(GL_QUADS);
+	 glColor3f(1.0, 1.0, 1.0);
+	 glTexCoord2f(0, 1); glVertex3f( -r,  r, -r );
+	 glTexCoord2f(0, 0); glVertex3f( -r,  r,  r );
+	 glTexCoord2f(1, 0); glVertex3f(  r,  r,  r );
+	 glTexCoord2f(1, 1); glVertex3f(  r,  r, -r );
+	 glEnd();
 
-	glDisable(GL_TEXTURE_2D);
-	glPopMatrix();
-	glEnable(GL_LIGHTING);
+     glBindTexture(GL_TEXTURE_2D,bottomTextureId); // select which texture to use 
+	 glBegin(GL_QUADS);
+	 glColor3f(1.0, 1.0, 1.0);
+	 glTexCoord2f(0, 0); glVertex3f( -r, -r, -r );
+	 glTexCoord2f(0, 1); glVertex3f( -r, -r,  r );
+	 glTexCoord2f(1, 1); glVertex3f(  r, -r,  r );
+	 glTexCoord2f(1, 0); glVertex3f(  r, -r, -r );
+	 glEnd();
+	 
+	 glDisable(GL_TEXTURE_2D);
+	 glPopMatrix();
+	 glEnable(GL_LIGHTING);
 }
 
 
