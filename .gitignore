@@ -1,5 +1,6 @@
 libs/
 lib/
+.venv/
 
 ## Automatically Generated VS directories
 Debug/
