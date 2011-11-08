@@ -26,6 +26,7 @@ Scripts/
 *.img
 *.bak
 *.log
+*.log.*
 *.db
 *.o
 [Oo]bj
