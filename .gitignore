@@ -18,6 +18,9 @@ ipch/
 *.komodoproject
 .komodotools
 
+## PyCharm Stuff
+.idea/
+
 ## Python Virtualenv stuff
 Libs/
 Include/
