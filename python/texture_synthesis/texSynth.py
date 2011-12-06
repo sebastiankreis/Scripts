@@ -67,22 +67,29 @@ class Synth(object):
 
     ## This utilizes my distance metric, I use a relative L2 norm to compare two overlapping regions
     def searchTexture(self, tex):
-        overlap = self.textonSize[0] / 3
+        overlap = self.textonSize[0] / 2
         texCut = self.getCut(tex, tex.width - overlap, 0, tex.width, tex.height)
 
         minSSD = 1000
-        index = (0,0)
         currentTile = tex
+        best = None
         
         for u in xrange(0, self.texture.height, self.textonSize[0]):
             for v in xrange(0, self.texture.width, self.textonSize[1]):  
-                index = rand(0,self.texture.height), rand(0,self.texture.width)
-                candidate = self.getTexton(self.texture, index[0], index[1])
+                candidate = self.getTexton(self.texture, u, v)
+                
                 if not candidate:
                     continue
-                else:
-                    break
+                
+                candidateCut = self.getCut(candidate, 0, 0, overlap, candidate.height)
+                result = cv.Norm(texCut, candidateCut, cv.CV_L2)
+                
+                if result < minSSD:
+                    print result
+                    best = candidate  
+                    minSSD = result
 
+       
         return candidate
 
 
