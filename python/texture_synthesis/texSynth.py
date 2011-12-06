@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys
 from random import randint as rand
 
@@ -7,7 +9,7 @@ except ImportError:
     sys.exit("OpenCV for Python is not found")
 
 
-class Synth:
+class Synth(object):
 
     ## Synth Constructor
     def __init__(self, textureFilename=None, texton=(5,5), size=(256,256)):
@@ -26,8 +28,11 @@ class Synth:
         x  = max( x - self.textonSize[0], 0)
         y  = max( y - self.textonSize[1], 0)
         dx = min( x + self.textonSize[0], image.width)
-        dy = min( y + self.textonSize[0], image.height)
-        return image[x:dx, y:dy]
+        dy = min( y + self.textonSize[1], image.height)
+        try:
+            return image[x:dx, y:dy]
+        except:
+            return None
     
     
     def copyTexture(self, image, tex):
@@ -70,17 +75,15 @@ class Synth:
         currentTile = tex
         
         for u in xrange(0, self.texture.height, self.textonSize[0]):
-            for v in xrange(0, self.texture.width, self.textonSize[1]):
-                candidate = self.getTexton(self.texture, u, v)        
-                candCut= self.getCut(candidate,0,0,overlap,candidate.height)
+            for v in xrange(0, self.texture.width, self.textonSize[1]):  
+                index = rand(0,self.texture.height), rand(0,self.texture.width)
+                candidate = self.getTexton(self.texture, index[0], index[1])
+                if not candidate:
+                    continue
+                else:
+                    break
 
-                result = cv.Norm(texCut, candCut, cv.CV_L2)
-    
-                if minSSD > result:
-                    index = (u,v)
-                    minSSD = result
-
-        return self.getTexton(self.texture, index[0], index[1])
+        return candidate
 
 
     def blend(self, newTexton, prevTexton):
@@ -132,8 +135,7 @@ def checkInput(inp, varName):
     return result
 
 
-if __name__ == '__main__':
-    
+if __name__ == '__main__':    
     if len(sys.argv) != 4:
         print "Usage: [texture filename] [texton size] [output image size] "
         sys.exit(1)
