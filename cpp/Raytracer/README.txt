@@ -1,9 +1,0 @@
-Dan Tracy
-Raytracer README
-Two late days used.
-
-** My outputs and ray files are in the SampleScenes folder. **
-
-Overall this was a very difficult project.  I used your starter code as my base and developed it from there.  Figuring out how to cast the rays was the first hurdle I faced.  I figured that out after the session in the IST building.  Currently the Triangle and Sphere intersection functions work properly.  The illumination and shade model works ok on some inputs, but on others it fails horribly.  The texture mapping is implemented for the sphere class alone.  It does work but sometimes it sets the u-value to be some extreme number and that causes the program to crash.  It often occurs when the sphere is half rendered on screen.  There are also several bugs with the lighting, for example see the picture StrangeLightStrip in the SampleScenes folder.  Sometimes there will be a very bright strip along the surface of the sphere and the rest of it will be dark.  I dont know how this propigated because it first appeared after I included reflection.  I disabled the reflection but it still remains.  Anyway I tried to implement the recursive reflection properly but for whatever reason the end result, while reflecting properly, looks very grainy.  I have no idea as to why this occurs.  I could not figure out how to implement refraction in time.
-
-Overall I spent around two weeks trying to get this thing to be presentable.  Currently the sphere and triangle intersections work, spheres support texture mapping while triangles do not, there is reflection though its ugly, and it supports lighting (sometimes).  This was a difficult challange but overall I found it to be enjoyable.
