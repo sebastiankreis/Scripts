@@ -1,7 +1,7 @@
 #ifndef FSUTIL_H
 #define FSUTIL_H
 
-#if defined(__linux__)
+#if defined(__linux__) || defined(__CYGWIN__)
 #include <endian.h>
 #define SWAP_LE(x, size) do {(x) = htole##size(x);} while(0)
 #elif defined(__sun)
