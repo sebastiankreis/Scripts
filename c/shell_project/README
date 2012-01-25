@@ -27,16 +27,3 @@ The pr_signal.c and pr_signal.h files just contain the signal installation funct
 signal handler for the SIGCHLD and SIGINT signals.
 
 The pr5.h file contains all of the macros used by the program.
-
---------------------------------------------------------------------------------------------------------------
-
-The majority of my time was spent trying to get the parse file to work properly.  The first main obstacle was
-getting the line properly tokenized.  After that getting the execv function to work properly was my next hurdle.
-After that i focued on forking and updating the process table.  After all that the last thing i focused on was 
-the builtin functions, which took the least amount of time.  Beside the parse file the other file that took the
-majority of my time was the pr5.c file itself.  Getting the program to run in interactive mode, read from a file
-or from the standard input, as well as several other things took a little more time than i have previously 
-anticipated.  The signal and ptable files were pretty much the same as i have used from Homework 4.  Overall I 
-really enjoyed this project, i found it very challanging.
-
-
