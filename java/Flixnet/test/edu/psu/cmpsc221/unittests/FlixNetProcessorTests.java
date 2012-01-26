@@ -2,7 +2,7 @@ package edu.psu.cmpsc221.unittests;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import psu.edu.cmpsc221.*;
+import edu.psu.cmpsc221.*;
 import java.util.ArrayList;
 
 public class FlixNetProcessorTests
