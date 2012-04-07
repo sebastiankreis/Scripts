@@ -17,3 +17,13 @@ class Post(models.Model):
     published_recently.admin_order_field = 'created'
     published_recently.boolean = True
     published_recently.short_description = "Published Recently?"
+
+
+class Comment(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    author = models.CharField(max_length=60)
+    body = models.TextField()
+    post = models.ForeignKey(Post)
+
+    def __unicode__(self):
+        return unicode("%s: %s" % (self.post, self.body[:60]))

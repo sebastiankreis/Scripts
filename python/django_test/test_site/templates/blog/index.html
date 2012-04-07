@@ -16,6 +16,7 @@
                     {% else %}
                         <div class="summary">{{ post.body|linebreaks }} <div>
                     {% endif %}
+                    <div class="comments"> # of comments: {{post.comment_set.count}} </div>
                 </ul>
         {% endfor %}
         </ul>

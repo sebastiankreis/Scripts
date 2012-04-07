@@ -15,15 +15,15 @@ urlpatterns = patterns('',
         name="poll_list"
     ),
 
-    url(r'^articles/monthly/$',
-        MonthArchiveView.as_view(
-            model=Post,
-            paginate_by=12,
-            date_field="created",
-            template_name="blog/monthly.html"
-            ),
-        name="monthly"
-    ),
+    # url(r'^articles/(?P<year>\d{4})/(?P<month>\d{2})/$',
+    #     MonthArchiveView.as_view(
+    #         model=Post,
+    #         paginate_by=12,
+    #         date_field="created",
+    #         template_name="blog/monthly.html"
+    #         ),
+    #     name="monthly"
+    # ),
 
     url(r'^articles/(?P<pk>\d+)/$',
         DetailView.as_view(
