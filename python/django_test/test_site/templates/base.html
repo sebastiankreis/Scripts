@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <LINK href="/media/style.css" rel="stylesheet" type="text/css">
+    {% block title %}
+    {% endblock %}
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div id="footer">
+        {% block footer %}
+        default footer text
+        {% endblock %}
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,1343 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"epi",
+				"episode"
+			],
+			[
+				"func",
+				"functionality"
+			],
+			[
+				"ex",
+				"expanduser  (function)"
+			],
+			[
+				"special",
+				"special_types"
+			],
+			[
+				"specia",
+				"specical_types"
+			],
+			[
+				"url",
+				"url_quote"
+			],
+			[
+				"qu",
+				"quote_plus  (function)"
+			],
+			[
+				"episodes",
+				"num_episodes  (variable)"
+			],
+			[
+				"ge",
+				"getdefaultencoding  (function)"
+			],
+			[
+				"tem",
+				"temp_dir"
+			],
+			[
+				"ver",
+				"version_info  (variable)"
+			],
+			[
+				"ep",
+				"episode"
+			],
+			[
+				"epis",
+				"episodes"
+			],
+			[
+				"ha",
+				"have_requests"
+			],
+			[
+				"info",
+				"infoFileDesc"
+			],
+			[
+				"epg",
+				"epguides_regex"
+			],
+			[
+				"req",
+				"Request  (class)"
+			],
+			[
+				"i",
+				"ifmain	if __name__ == '__main__'"
+			],
+			[
+				"lo",
+				"load_source  (function)"
+			],
+			[
+				"def",
+				"default_config"
+			],
+			[
+				"sav",
+				"save_renamed_file_info  (function)"
+			],
+			[
+				"show",
+				"show_title"
+			],
+			[
+				"load",
+				"load_renamed_file"
+			],
+			[
+				"assert",
+				"assert_raises"
+			],
+			[
+				"get",
+				"get_episodes  (function)"
+			],
+			[
+				"sho",
+				"showTitle"
+			],
+			[
+				"epl",
+				"epList"
+			],
+			[
+				"dis",
+				"displayUndoRenameDialog"
+			],
+			[
+				"Sett",
+				"Settings"
+			],
+			[
+				"fo",
+				"for	For Loop"
+			],
+			[
+				"tr",
+				"try	Try/Except"
+			],
+			[
+				"filter",
+				"filtered_episodes"
+			],
+			[
+				"episode",
+				"episodeNumber  (variable)"
+			],
+			[
+				"episod",
+				"episode_number"
+			],
+			[
+				"file_",
+				"file_exists_in_resources"
+			],
+			[
+				"open",
+				"open_file_in_resources"
+			],
+			[
+				"access",
+				"access_time_file"
+			],
+			[
+				"undo",
+				"undo_rename"
+			],
+			[
+				"c",
+				"cygdrive"
+			],
+			[
+				"SIT",
+				"SITE_ROOT"
+			],
+			[
+				"for",
+				"format_string_  (variable)"
+			],
+			[
+				"up",
+				"updateDirectoryListing  (function)"
+			],
+			[
+				"update_",
+				"update_directory"
+			],
+			[
+				"u",
+				"updater  (variable)"
+			],
+			[
+				"strip",
+				"strip_whitespace"
+			],
+			[
+				"Ani",
+				"AniDBMustAuthError"
+			],
+			[
+				"regex",
+				"regex_vars"
+			],
+			[
+				"poll",
+				"poll_id"
+			],
+			[
+				"selec",
+				"selected_choice"
+			],
+			[
+				"Http",
+				"Http404  (class)"
+			],
+			[
+				"po",
+				"poll_id"
+			],
+			[
+				"H",
+				"HttpResponse"
+			],
+			[
+				"HttpR",
+				"HttpResponse  (class)"
+			],
+			[
+				"pub",
+				"pub_date"
+			],
+			[
+				"publ",
+				"published_recently"
+			],
+			[
+				"a",
+				"autodiscover"
+			],
+			[
+				"time",
+				"datetime_CAPI  (variable)"
+			],
+			[
+				"datet",
+				"datetime"
+			],
+			[
+				"pu",
+				"pub_date  (variable)"
+			],
+			[
+				"Show",
+				"ShowException"
+			],
+			[
+				"warn",
+				"warning  (function)"
+			],
+			[
+				"gen",
+				"generate_settings"
+			],
+			[
+				"o",
+				"open_file_in_resources  (function)"
+			],
+			[
+				"confi",
+				"config_loc"
+			],
+			[
+				"DE",
+				"DEFUALT_TAG_CONFIG  (variable)"
+			],
+			[
+				"gener",
+				"generate_default_tags"
+			],
+			[
+				"write",
+				"write_config"
+			],
+			[
+				"Str",
+				"StringIO"
+			],
+			[
+				"title",
+				"titles_dict"
+			],
+			[
+				"form",
+				"formatter"
+			],
+			[
+				"rename",
+				"renameDir  (variable)"
+			],
+			[
+				"exp",
+				"expandvars  (function)"
+			],
+			[
+				"specials",
+				"specialsList"
+			],
+			[
+				"A",
+				"API_KEY"
+			],
+			[
+				"PO",
+				"PROJECT_SOURCE_PATH"
+			],
+			[
+				"PR",
+				"PROJECT_SOURCE_PATH"
+			],
+			[
+				"Ep",
+				"EpisodeFile"
+			],
+			[
+				"List",
+				"ListException"
+			],
+			[
+				"AP",
+				"API_Exception"
+			],
+			[
+				"ma",
+				"maxEpisodeNumber"
+			],
+			[
+				"ty",
+				"special_type"
+			],
+			[
+				"_pa",
+				"_parse_episode"
+			],
+			[
+				"_p",
+				"_parse_special"
+			],
+			[
+				"add",
+				"add_specials  (function)"
+			],
+			[
+				"db",
+				"dbName"
+			],
+			[
+				"special_",
+				"special_number"
+			],
+			[
+				"extr",
+				"extract_file_info"
+			],
+			[
+				"path",
+				"pathname"
+			],
+			[
+				"new",
+				"new_name"
+			],
+			[
+				"veri",
+				"verify_files"
+			],
+			[
+				"str",
+				"store_true"
+			],
+			[
+				"v",
+				"verbose"
+			],
+			[
+				"group",
+				"groupdict"
+			],
+			[
+				"uto",
+				"utorrent_path"
+			],
+			[
+				"inser",
+				"insert_snippet"
+			],
+			[
+				"episo",
+				"episodeList"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 173.0,
+		"selected_items":
+		[
+			[
+				"py",
+				"Set Syntax: Python"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"set py",
+				"Set Syntax: Python"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"linter",
+				"Preferences: Closure Linter Settings – User"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"python",
+				"Set Syntax: Python"
+			],
+			[
+				"todo",
+				"Show TODOs in project and open files"
+			],
+			[
+				"inst	",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: __magic__"
+			],
+			[
+				"ins	",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"MARK	",
+				"Set Syntax: Markdown"
+			],
+			[
+				"set syn mar",
+				"Set Syntax: Markdown"
+			],
+			[
+				"markd",
+				"Set Syntax: MultiMarkdown"
+			],
+			[
+				"mar",
+				"Set Syntax: Markdown"
+			],
+			[
+				"in	",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"re",
+				"Package Control: Remove Package"
+			],
+			[
+				"set syntax dj",
+				"Set Syntax: HTML (Django)"
+			],
+			[
+				"set syntax d",
+				"Set Syntax: Python Django"
+			],
+			[
+				"remve",
+				"Package Control: Remove Package"
+			],
+			[
+				"java",
+				"Set Syntax: Java"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"br",
+				"Preferences: Browse Packages"
+			],
+			[
+				"rope:",
+				"Rope Refactoring: Rename"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"rope ",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"set syntax py",
+				"Set Syntax: Python"
+			],
+			[
+				"reg",
+				"Set Syntax: Regular Expression"
+			],
+			[
+				"gg",
+				"Git: Graph All"
+			],
+			[
+				"gc",
+				"Git: Commit"
+			],
+			[
+				"ga",
+				"Git: Add..."
+			],
+			[
+				"gd",
+				"Git: Diff All"
+			],
+			[
+				"package in",
+				"Package Control: Install Package"
+			],
+			[
+				"sublimelinter",
+				"SublimeLinter: Extract Annotations"
+			],
+			[
+				"disco",
+				"Package Control: Discover Packages"
+			]
+		],
+		"width": 536.0
+	},
+	"console":
+	{
+		"height": 212.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Dan/Coding/episode_parser/eplist/utils.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/web_sources/anidb.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/web_sources/tvdb.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/logger.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/settings.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/episode.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/constants.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/__pycache__/settings.cpython-32.pyc",
+		"/C/Users/Dan/Coding/episode_parser/eplist/cache.py",
+		"/C/Users/Dan/Desktop/managed-beans-1/src/coreservlets/TrainingForm.java",
+		"/C/Users/Dan/Desktop/managed-beans-1/src/coreservlets/Customer.java",
+		"/C/Users/Dan/Desktop/managed-beans-1/src/coreservlets/LanguageUtils.java",
+		"/C/Users/Dan/Desktop/managed-beans-1/src/coreservlets/BankingBean.java",
+		"/C/Users/Dan/Desktop/managed-beans-1/src/coreservlets/CustomerSimpleMap.java",
+		"/C/Program Files (x86)/Idlex/idlex.py",
+		"/C/Users/Dan/Desktop/managed-beans-1/src/coreservlets/RandomUtils.java",
+		"/C/Users/Dan/Desktop/managed-beans-1/src/coreservlets/CustomerLookupService.java",
+		"/C/Users/Dan/Coding/episode_parser/eplist/main.py",
+		"/C/Users/Dan/Desktop/basics/WebContent/WEB-INF/web.xml",
+		"/C/Users/Dan/Desktop/basics/WebContent/WEB-INF/faces-config.xml",
+		"/C/Users/Dan/Desktop/basics/WebContent/choose-language.xhtml",
+		"/C/Users/Dan/Desktop/basics/WebContent/index.html",
+		"/C/Users/Dan/Desktop/basics/WebContent/start-page.xhtml",
+		"/C/Users/Dan/AppData/Roaming/eplist/resources/last_rename.json",
+		"/C/Users/Dan/Downloads/New folder (2)/urls.py",
+		"/C/Users/Dan/Downloads/New folder (2)/templates/home.html",
+		"/C/Users/Dan/Downloads/New folder (2)/linesapp/views.py",
+		"/C/Users/Dan/Downloads/New folder (2)/linesapp/tests.py",
+		"/C/Users/Dan/Downloads/New folder (2)/linesapp/scores_logic.py",
+		"/C/Users/Dan/Downloads/New folder (2)/linesapp/models.py",
+		"/C/Users/Dan/Downloads/New folder (2)/media/js/colorful_lines.js",
+		"/C/Users/Dan/Downloads/New folder (2)/media/js/do_ajax.js",
+		"/C/Users/Dan/Downloads/New folder (2)/media/js/graph.js",
+		"/C/Users/Dan/Downloads/New folder (2)/media/js/lib/qunit.js",
+		"/C/Users/Dan/Downloads/New folder (2)/templates/base.html",
+		"/C/Users/Dan/Downloads/New folder (2)/manage.py",
+		"/C/Users/Dan/Downloads/New folder (2)/linesapp/__init__.py",
+		"/C/Users/Dan/Downloads/New folder (2)/settings.py",
+		"/C/Users/Dan/Downloads/New folder (2)/__init__.py",
+		"/C/cygwin/home/Dan/.bashrc",
+		"/C/Python27/Lib/site-packages/eplist/episode.py",
+		"/C/Python27/Lib/site-packages/eplist/main.py",
+		"/C/Users/Dan/Coding/Scripts/c/shell_project/pr_parse.c",
+		"/C/Users/Dan/Coding/Scripts/c/shell_project/pr_parse.h",
+		"/C/Users/Dan/Coding/Scripts/c/shell_project/pr_signal.c",
+		"/C/Users/Dan/Coding/Scripts/c/shell_project/pr_signal.h",
+		"/C/Users/Dan/Coding/Scripts/c/shell_project/pr_table.c",
+		"/C/Users/Dan/Coding/Scripts/c/shell_project/pr_table.h",
+		"/C/Users/Dan/Coding/Scripts/c/shell_project/pr5.c",
+		"/C/Users/Dan/Coding/Scripts/c/shell_project/pr5.h",
+		"/C/Users/Dan/AppData/Roaming/Sublime Text 2/Packages/User/sublime-closure-linter.sublime-settings",
+		"/C/Users/Dan/Desktop/test.c",
+		"/C/Users/Dan/Desktop/cv.txt",
+		"/C/Users/Dan/Coding/episode_parser/eplist/show_finder.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/eplist.sublime-project",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/__init__.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/settings.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/manage.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/test_site/wsgi.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/test_site/__init__.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/test_site/urls.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/test_site/settings.py",
+		"/C/Users/Dan/AppData/Local/Temp/7zO6E86.tmp/__init__.py",
+		"/C/Users/Dan/AppData/Local/Temp/7zO2871.tmp/utils.py",
+		"/C/Users/Dan/Documents/viasat",
+		"/C/Users/Dan/Coding/episode_parser/setup.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/web_sources/epguides.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/poll_sources.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/__init__.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/web_sources/__init__.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/gui/gui.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/gui/__init__.py",
+		"/C/Users/Dan/AppData/Local/Temp/7zO2B5B.tmp/settings.py",
+		"/C/Users/Dan/Coding/episode_parser/README.rst",
+		"/C/Users/Dan/AppData/Local/Temp/7zO529A.tmp/settings.py",
+		"/C/Users/Dan/AppData/Local/Temp/7zO29F4.tmp/setup.py",
+		"/C/Users/Dan/Downloads/sushi_roll.py",
+		"/C/Users/Dan/Coding/episode_parser/.coverage",
+		"/C/Users/Dan/Downloads/tvrenamr-3.2.1/tvrenamr/lib/filter_deluge.py",
+		"/C/Users/Dan/Downloads/eplist-0.1.4/eplist/settings.py",
+		"/C/Users/Dan/Downloads/tvrenamr-3.2.1/tvrenamr/config.py",
+		"/C/Users/Dan/Downloads/tvrenamr-3.2.1/tvrenamr/episode.py",
+		"/C/Users/Dan/Downloads/tvrenamr-3.2.1/tvrenamr/errors.py",
+		"/C/Users/Dan/Downloads/tvrenamr-3.2.1/tvrenamr/frontend.py",
+		"/C/Users/Dan/Downloads/tvrenamr-3.2.1/tvrenamr/logs.py",
+		"/C/Users/Dan/Downloads/tvrenamr-3.2.1/tvrenamr/main.py",
+		"/C/Users/Dan/Downloads/tvrenamr-3.2.1/tvrenamr/options.py",
+		"/C/Users/Dan/Downloads/tvrenamr-3.2.1/tvrenamr/lib/thetvdb.py",
+		"/C/Users/Dan/Coding/episode_parser/tests/test_Utils.py",
+		"/C/Users/Dan/Coding/episode_parser/tests/test_Cache.py",
+		"/C/Users/Dan/Coding/episode_parser/tests/test_Parser.py",
+		"/C/Users/Dan/Coding/episode_parser/tests/test_poll_sources.py",
+		"/C/Users/Dan/Coding/episode_parser/tests/__init__.py",
+		"/C/Users/Dan/Coding/episode_parser/tests/test_anidb.py",
+		"/C/Users/Dan/AppData/Local/Temp/7zO3C5B.tmp/main.py",
+		"/C/Users/Dan/Coding/episode_parser/eplist/gui.py",
+		"/C/Users/Dan/Coding/episode_parser/MANIFEST.in",
+		"/C/Users/Dan/AppData/Roaming/eplist/resources/schema.sql",
+		"/C/Users/Dan/Documents/Resume/coverletter.txt"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"API_KEY",
+			"_connect_UDP",
+			"json.dump",
+			"ep",
+			"f.",
+			"f",
+			"f\\.",
+			"os\\.",
+			"self.re",
+			"foo",
+			"ep",
+			"ep ",
+			"self.tags",
+			"Settings\\['tags'\\]",
+			"SelectItem",
+			"episodes ",
+			"episodes",
+			"show",
+			"prepare_filenames",
+			"path",
+			"show",
+			"verify_files",
+			"veri",
+			"episode_files",
+			"prepare",
+			"display_episodes",
+			"formatter",
+			"find_old_filenames",
+			"utils.find_old_filenames",
+			"print_renamed_files",
+			"args.title",
+			"submit_highscore",
+			"Game.token",
+			"got_token_from_server",
+			"get_token",
+			"submit_highscore",
+			"place_new_balls",
+			"get_token",
+			"this",
+			"self",
+			"\\._",
+			"s",
+			"re\\.",
+			"eplist",
+			"print",
+			"episode",
+			"episode =",
+			"episode",
+			"episode.",
+			"episode\\.",
+			"episode",
+			"utils",
+			"print",
+			"url_q",
+			"url_qg",
+			"input",
+			"parse_range",
+			"range",
+			"print",
+			"print^[\\(].*",
+			"print^[\\(]",
+			"print ^[\\(]",
+			"print[^\\(]",
+			"self.",
+			"self.modifier_settings",
+			"self.settings",
+			" = ",
+			"self.tags",
+			"map",
+			"show\\.",
+			"print",
+			"type",
+			"OVA",
+			"Special",
+			"specials",
+			"Episode",
+			".episode_",
+			"\\.episode_file",
+			".episode_file",
+			"special",
+			"self\\.episode_",
+			"\\.num",
+			"\\.episode",
+			",",
+			"encode",
+			"Soup",
+			"assert (.*) != (.*)",
+			"assert (.*) == (.*)",
+			"utils.temporary_file",
+			"tempfile",
+			"Settings",
+			"init_resource_folder",
+			"print",
+			"Settings",
+			"u\"",
+			"isin",
+			"schema",
+			"self.cur",
+			"self.cursor",
+			"\\[\\]",
+			"regex",
+			"utils\\.regex_(.*)(\\(.*\\))",
+			"utils\\.regex_(.*)\\(",
+			"get_url_descriptor",
+			"is None",
+			"resp",
+			"seriesFileDesc",
+			"infoFileData",
+			"get_url_descriptor",
+			"content",
+			"get_url_descriptor",
+			"regex",
+			"content",
+			"format(aid)",
+			"_create_db_query",
+			"RESOURCE_PATH",
+			"Asc",
+			"Utils",
+			"rename_backup",
+			"with old",
+			"logging",
+			"Settings",
+			"Parser",
+			", ",
+			"None",
+			"'",
+			"##",
+			"new_creation"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"show.episodes",
+			"utils\\.parse_range",
+			"\\.file",
+			"assert_not_equal(\\1, \\2)",
+			"assert_equal(\\1, \\2)",
+			"re.\\1\\(\\2\\)",
+			"get_url_data",
+			"utils",
+			"log",
+			"null",
+			"\"",
+			"//",
+			"log",
+			"utils",
+			"assert_raises(ValueError, cache.get_\\1, showTitle=\\2)",
+			"assert_raises(ValueError, cache.\\1, showTitle=\\2, episodes=\\3)",
+			"Cache, \\1",
+			"raises",
+			"",
+			"episode_renamer",
+			"Utils",
+			"episode_count",
+			"num_episodes",
+			"proper_title",
+			"\\1_\\2",
+			"_episodes_by_season",
+			"num_seasons",
+			"max_episode_number",
+			"episode_number",
+			"episodes",
+			"specials",
+			"self.updater.update_episodes.emit()",
+			"GuiStateDict",
+			"Settings['formatter']",
+			"Settings['path']",
+			"Settings['show']",
+			"logging",
+			"tags",
+			" = ",
+			", ",
+			" = ",
+			", ",
+			"callback=None",
+			", ",
+			"\\1, ",
+			"\\1 = \\2",
+			"\\1, \\2",
+			"/1, /2",
+			"sys.exit",
+			"logging",
+			"'\\1' : '\\2'",
+			":",
+			"episode_parser",
+			"Utils\\.",
+			"Utils",
+			"episode_parser",
+			",",
+			"",
+			"set([\\1])",
+			"print \\(\\1\\)"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 32.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"tv",
+				"eplist/web_sources/tvdb.py"
+			],
+			[
+				"ani",
+				"eplist/web_sources/anidb.py"
+			],
+			[
+				"log",
+				"eplist/logger.py"
+			],
+			[
+				"con",
+				"eplist/constants.py"
+			],
+			[
+				"epis",
+				"eplist/episode.py"
+			],
+			[
+				"sett",
+				"eplist/settings.py"
+			],
+			[
+				"cac",
+				"eplist/cache.py"
+			],
+			[
+				"ut",
+				"eplist/utils.py"
+			],
+			[
+				"main",
+				"eplist/main.py"
+			],
+			[
+				"",
+				"eplist/show_finder.py"
+			],
+			[
+				"epi",
+				"eplist/episode.py"
+			],
+			[
+				"epg",
+				"eplist/web_sources/epguides.py"
+			],
+			[
+				"tvd",
+				"eplist/web_sources/tvdb.py"
+			],
+			[
+				"setting",
+				"eplist/settings.py"
+			],
+			[
+				"set",
+				"setup.py"
+			],
+			[
+				"poll",
+				"eplist/poll_sources.py"
+			],
+			[
+				"show",
+				"eplist/show_finder.py"
+			],
+			[
+				"ini",
+				"eplist/__init__.py"
+			],
+			[
+				"g",
+				"eplist/gui/gui.py"
+			],
+			[
+				"an",
+				"eplist/web_sources/anidb.py"
+			],
+			[
+				"t",
+				"eplist/web_sources/tvdb.py"
+			],
+			[
+				"uti",
+				"eplist/utils.py"
+			],
+			[
+				"re",
+				"README.rst"
+			],
+			[
+				"cache",
+				"eplist/cache.py"
+			],
+			[
+				"sho",
+				"eplist/show_finder.py"
+			],
+			[
+				"util",
+				"eplist/utils.py"
+			],
+			[
+				"test_cac",
+				"tests/test_Cache.py"
+			],
+			[
+				"testcac",
+				"tests/test_Cache.py"
+			],
+			[
+				"test",
+				"tests/test_Utils.py"
+			],
+			[
+				"init",
+				"eplist/__init__.py"
+			],
+			[
+				"anid",
+				"eplist/web_sources/anidb.py"
+			],
+			[
+				"settin",
+				"eplist/settings.py"
+			],
+			[
+				"cons",
+				"eplist/constants.py"
+			],
+			[
+				"utl",
+				"eplist/utils.py"
+			],
+			[
+				"ma",
+				"MANIFEST.in"
+			],
+			[
+				"s",
+				"setup.py"
+			],
+			[
+				"m",
+				"MANIFEST.in"
+			],
+			[
+				"web",
+				"eplist/web_sources/anidb.py"
+			],
+			[
+				"cach",
+				"eplist/cache.py"
+			],
+			[
+				"epl",
+				"eplist/eplist.py"
+			],
+			[
+				"settings",
+				"eplist/Settings.py"
+			],
+			[
+				"logger",
+				"eplist/logger.py"
+			],
+			[
+				"conf",
+				"config.json"
+			],
+			[
+				"logg",
+				"eplist/logger.py"
+			],
+			[
+				"se",
+				"setup.py"
+			],
+			[
+				"def",
+				"eplist/default_config.py"
+			],
+			[
+				"lo",
+				"eplist/logger.py"
+			],
+			[
+				"l",
+				"LICENCE"
+			],
+			[
+				"epl_",
+				"eplist_gui"
+			],
+			[
+				"par",
+				"episode_renamer/Parser.py"
+			],
+			[
+				"testc",
+				"tests/test_Cache.py"
+			],
+			[
+				"c",
+				"episode_renamer/Cache.py"
+			],
+			[
+				"git",
+				".gitignore"
+			],
+			[
+				"req",
+				"requirements.txt"
+			],
+			[
+				"cong",
+				"resources/config.py"
+			],
+			[
+				"utils",
+				"episode_renamer/Utils.py"
+			],
+			[
+				"ep",
+				"eplist.py"
+			],
+			[
+				"u",
+				"episode_parser/Utils.py"
+			],
+			[
+				"po",
+				"episode_parser/poll_sources.py"
+			],
+			[
+				"p",
+				"episode_parser/Parser.py"
+			],
+			[
+				".",
+				".gitignore"
+			],
+			[
+				"pa",
+				"episode_parser/Parser.py"
+			],
+			[
+				"ex",
+				"episode_parser/Exceptions.py"
+			],
+			[
+				"view",
+				"polls/views.py"
+			],
+			[
+				"url",
+				"polls/urls.py"
+			],
+			[
+				"regv",
+				"registration/views.py"
+			],
+			[
+				"regbau",
+				"registration/backends/default/urls.py"
+			],
+			[
+				"registration/",
+				"registration/urls.py"
+			],
+			[
+				"mod",
+				"apps/polls/models.py"
+			],
+			[
+				"te",
+				"templates/polls/results.html"
+			],
+			[
+				"v",
+				"apps/polls/views.py"
+			],
+			[
+				"ad",
+				"apps/polls/admin.py"
+			],
+			[
+				"episo",
+				"episode_parser/episode_parser/Episode.py"
+			],
+			[
+				"gu",
+				"episode_parser/gui.pyw"
+			],
+			[
+				"testu",
+				"episode_parser/tests/test_Utils.py"
+			],
+			[
+				"html",
+				"templates/polls/detail.html"
+			],
+			[
+				"b",
+				"templates/polls/base.html"
+			],
+			[
+				"vi",
+				"polls/views.py"
+			],
+			[
+				".h",
+				"templates/polls/index.html"
+			],
+			[
+				"in",
+				"__init__.py"
+			],
+			[
+				"pol",
+				"poll_sources.py"
+			],
+			[
+				"e",
+				"Episode.py"
+			],
+			[
+				"inde",
+				"templates/polls/index.html"
+			],
+			[
+				"ur",
+				"urls.py"
+			],
+			[
+				"epo",
+				"Episode.py"
+			],
+			[
+				"setup.py",
+				"/C/Users/Dan/AppData/Local/Temp/7zO44C6.tmp/sublime_plugin.py"
+			],
+			[
+				"gui",
+				"gui/gui.py"
+			],
+			[
+				"a",
+				"web_sources/anidb.py"
+			],
+			[
+				"sour",
+				"Source_Poll_API.py"
+			],
+			[
+				"tb",
+				"web_sources/tvdb.py"
+			],
+			[
+				"ap",
+				"Source_Poll_API.py"
+			],
+			[
+				"w",
+				"web_sources/anidb.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/Users/Dan/Coding/episode_parser/eplist/eplist.sublime-project"
+			]
+		],
+		"width": 520.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

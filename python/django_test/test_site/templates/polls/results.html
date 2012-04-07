@@ -1,3 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title> {{poll.question }} </title>
+{% endblock %}
+
+{% block content %}
 <h1>{{ poll.question }}</h1>
 
 <ul>
@@ -6,4 +13,5 @@
 {% endfor %}
 </ul>
 
-<a href="/polls/{{ poll.id }}">Vote again?</a>
+<a href="/polls/{{ poll.id }}/">Vote again?</a>
+{% endblock %}

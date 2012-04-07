@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url, include
+from django.conf.urls.defaults import patterns, url
 from django.views.generic import DetailView, ListView
 from polls.models import Poll
 
@@ -8,14 +8,16 @@ urlpatterns = patterns('',
             queryset=Poll.objects.order_by('-pub_date')[:5],
             context_object_name='latest_poll_list',
             template_name="polls/index.html"
-            )
+            ),
+        name="poll_list"
         ),
 
     url(r'^(?P<pk>\d+)/$',
         DetailView.as_view(
             model=Poll,
             template_name="polls/detail.html"
-            )
+            ),
+        name="poll_detail"
         ),
 
     url(r'^(?P<pk>\d+)/results/$',

@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
@@ -12,7 +12,7 @@ def vote(request, poll_id):
         selected_choice = p.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         return render_to_response('polls/detail.html',
-            {'poll': p, 'error_message': "Didn't select a choice"},
+            {'poll': p, 'error_message': "Failed to select a choice"},
             context_instance=RequestContext(request))
     else:
         selected_choice.votes += 1

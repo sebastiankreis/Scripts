@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 # Create your models here.
 class Poll(models.Model):
     question = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+    pub_date = models.DateTimeField('date published', default=datetime.now())
 
     def __unicode__(self):
         return self.question
@@ -21,7 +21,7 @@ class Poll(models.Model):
 class Choice(models.Model):
     poll = models.ForeignKey(Poll)
     choice = models.CharField(max_length=200)
-    votes = models.IntegerField()
+    votes = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.choice
