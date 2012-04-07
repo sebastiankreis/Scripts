@@ -6,12 +6,15 @@ package com.beans;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author Dan
  */
-@ManagedBean
+@ManagedBean(name="user")
 @ApplicationScoped
 public class User {
     private String username;
@@ -40,5 +43,24 @@ public class User {
             System.out.println("NOPE");
             return "invalid-user";
         }
+    }
+
+    public boolean isLoggedIn(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        Cookie cookie[] = ((HttpServletRequest)context.getExternalContext().getRequest()).getCookies();
+        
+        if(cookie == null){
+            return false;
+        }
+
+        for(Cookie c : cookie){
+            if(!c.getName().equals("logged_in"))
+                continue;
+
+            if(c.getValue().equals("true"))
+                return true;
+        }
+
+        return false;
     }
 }
