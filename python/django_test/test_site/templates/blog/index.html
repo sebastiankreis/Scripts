@@ -1,0 +1,31 @@
+{% extends "blog/blog_base.html" %}
+
+{% block header %}
+<h2> Blog Posts </h2>
+{% endblock %}
+
+{% block content %}
+    {% if posts %}
+        <ul>
+        {% for post in posts %}
+            <div class="title"><a href="/blog/articles/{{post.id}}"> {{ post.title }} </a> </div>
+                <ul>
+                    <div class="time">{{ post.created }}</div>
+                    {% if post.body|length > 200 %}
+                        <div class="summary">{{ post.body|linebreaks|slice:":200" }} ...</div>
+                    {% else %}
+                        <div class="summary">{{ post.body|linebreaks }} <div>
+                    {% endif %}
+                </ul>
+        {% endfor %}
+        </ul>
+
+        {%block pagination%}
+                {{block.super}}
+        {% endblock %}
+
+    {% else %}
+        <p>No blog posts are available.</p>
+    {% endif %}
+
+{% endblock %}

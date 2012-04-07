@@ -7,16 +7,32 @@
 </head>
 
 <body>
-    <div id="wrap">
-        <div id="content">
-            {% block content %}
-            {% endblock %}
+
+    <div id="header">
+        {% block header %}
+        <h2>Default Header</h2>
+        {% endblock %}
+    </div>
+
+    <div class="colmask leftmenu">
+        <div class="colleft">
+            <div class="col1">
+                {% block content %}
+                Default Content
+                {% endblock %}
+            </div>
+            <div class="col2">
+                <a href="/"> <p>Home</p> </a>
+                <a href="/polls"> <p> Go to Polls</p> </a>
+                <a href="/blog"> <p>Go to the Blog </p> </a>
+                <a href="/accounts/register"> <p> User Registration </p> </a>
+            </div>
         </div>
     </div>
 
     <div id="footer">
         {% block footer %}
-        default footer text
+        <p> default footer text </p>
         {% endblock %}
     </div>
 
