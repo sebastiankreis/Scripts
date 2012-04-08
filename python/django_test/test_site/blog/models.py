@@ -1,5 +1,6 @@
-from django.db import models
+from django.template.defaultfilters import slugify
 from datetime import datetime, timedelta
+from django.db import models
 
 
 # Create your models here.
@@ -7,6 +8,14 @@ class Post(models.Model):
     title = models.CharField(max_length=60)
     body = models.TextField()
     created = models.DateTimeField(default=datetime.now())
+    slug = models.SlugField()
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return self.created.strftime("%Y/%b/%d").lower()
 
     def __unicode__(self):
         return self.title
@@ -17,13 +26,3 @@ class Post(models.Model):
     published_recently.admin_order_field = 'created'
     published_recently.boolean = True
     published_recently.short_description = "Published Recently?"
-
-
-class Comment(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    author = models.CharField(max_length=60)
-    body = models.TextField()
-    post = models.ForeignKey(Post)
-
-    def __unicode__(self):
-        return unicode("%s: %s" % (self.post, self.body[:60]))

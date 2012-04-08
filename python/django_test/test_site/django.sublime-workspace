@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"crea",
+				"created__month"
+			],
+			[
+				"c",
+				"created__year"
+			],
+			[
+				"rend",
+				"render_to_response  (function)"
+			],
+			[
+				"get",
+				"get_list_or_404"
+			],
+			[
+				"u",
+				"urls"
+			],
+			[
+				"N",
+				"MonthArchiveView  (class)"
+			],
+			[
+				"sl",
+				"slugify"
+			],
+			[
+				"date",
+				"date_field"
+			],
+			[
+				"Mod",
+				"ModelForm"
+			],
+			[
+				"M",
+				"ModelForm"
+			],
+			[
+				"da",
+				"DateTimeField  (class)"
+			],
+			[
 				"epi",
 				"episode"
 			],
@@ -100,10 +144,6 @@
 				"assert_raises"
 			],
 			[
-				"get",
-				"get_episodes  (function)"
-			],
-			[
 				"sho",
 				"showTitle"
 			],
@@ -156,10 +196,6 @@
 				"undo_rename"
 			],
 			[
-				"c",
-				"cygdrive"
-			],
-			[
 				"SIT",
 				"SITE_ROOT"
 			],
@@ -174,10 +210,6 @@
 			[
 				"update_",
 				"update_directory"
-			],
-			[
-				"u",
-				"updater  (variable)"
 			],
 			[
 				"strip",
@@ -391,44 +423,36 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "templates/polls/detail.html",
-			"settings":
-			{
-				"buffer_size": 653,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/polls/results.html",
-			"settings":
-			{
-				"buffer_size": 441,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 173.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
-				"py",
-				"Set Syntax: Python"
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
 			],
 			[
 				"rem",
 				"Package Control: Remove Package"
 			],
 			[
-				"set py",
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"py",
 				"Set Syntax: Python"
 			],
 			[
-				"remove",
-				"Package Control: Remove Package"
+				"set py",
+				"Set Syntax: Python"
 			],
 			[
 				"linter",
@@ -436,10 +460,6 @@
 			],
 			[
 				"instal",
-				"Package Control: Install Package"
-			],
-			[
-				"inst",
 				"Package Control: Install Package"
 			],
 			[
@@ -523,10 +543,6 @@
 				"Set Syntax: Java"
 			],
 			[
-				"insta",
-				"Package Control: Install Package"
-			],
-			[
 				"br",
 				"Preferences: Browse Packages"
 			],
@@ -600,22 +616,42 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/blog/index.html",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/blog/blog_base.html",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/blog/templatetags/pagination.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/blog/views.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/blog/templatetags/pageination_template.html",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/blog/urls.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/blog/templatetags/__init__.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/blog/admin.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/blog/templatetags/pagination.html",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/pagination.html",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/blog/article.html",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/blog/models.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/polls/views.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/blog/monthly.html",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/settings.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/polls/detail.html",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/polls/urls.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/polls/models.py",
+		"/C/Users/Dan/AppData/Local/Temp/7zO3CC7.tmp/views.py",
+		"/C/Users/Dan/AppData/Local/Temp/7zOD4A1.tmp/models.py",
+		"/C/Users/Dan/AppData/Local/Temp/7zEC0C2.tmp/models.py",
+		"/C/Users/Dan/AppData/Local/Temp/7zO83F1.tmp/urls.py",
+		"/C/Users/Dan/AppData/Roaming/Sublime Text 2/Packages/ZenCoding/zencoding/__init__.py",
+		"/C/Users/Dan/AppData/Roaming/Sublime Text 2/Packages/ZenCoding/sublimezenplugin.py",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/polls/results.html",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/polls/index.html",
 		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/base.html",
+		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/urls.py",
 		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/media/style.css",
 		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/index.html",
-		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/polls/index.html",
-		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/urls.py",
-		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/settings.py",
 		"/C/Users/Dan/AppData/Local/Temp/7zECE22.tmp/index.html",
 		"/C/Users/Dan/AppData/Local/Temp/7zEAE33.tmp/index.html",
-		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/polls/urls.py",
 		"/C/Users/Dan/Coding/Scripts/python/django_test/colorful_lines_project/templates/home.html",
 		"/C/Users/Dan/Coding/Scripts/python/django_test/colorful_lines_project/templates/base.html",
 		"/C/Users/Dan/Coding/Scripts/python/django_test/colorful_lines_project/settings.py",
-		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/polls/views.py",
-		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/polls/models.py",
 		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/polls/404.html",
-		"/C/Users/Dan/Coding/Scripts/python/django_test/test_site/templates/polls/results.html",
 		"/C/Users/Dan/Coding/Scripts/python/django_test/colorful_lines_project/urls.py",
 		"/C/Users/Dan/Coding/Scripts/python/django_test/colorful_lines_project/manage.py",
 		"/C/Users/Dan/AppData/Local/Temp/7zOEB2F.tmp/settings.py",
@@ -707,16 +743,7 @@
 		"/C/Users/Dan/Downloads/tvrenamr-3.2.1/tvrenamr/options.py",
 		"/C/Users/Dan/Downloads/tvrenamr-3.2.1/tvrenamr/lib/thetvdb.py",
 		"/C/Users/Dan/Coding/episode_parser/tests/test_Utils.py",
-		"/C/Users/Dan/Coding/episode_parser/tests/test_Cache.py",
-		"/C/Users/Dan/Coding/episode_parser/tests/test_Parser.py",
-		"/C/Users/Dan/Coding/episode_parser/tests/test_poll_sources.py",
-		"/C/Users/Dan/Coding/episode_parser/tests/__init__.py",
-		"/C/Users/Dan/Coding/episode_parser/tests/test_anidb.py",
-		"/C/Users/Dan/AppData/Local/Temp/7zO3C5B.tmp/main.py",
-		"/C/Users/Dan/Coding/episode_parser/eplist/gui.py",
-		"/C/Users/Dan/Coding/episode_parser/MANIFEST.in",
-		"/C/Users/Dan/AppData/Roaming/eplist/resources/schema.sql",
-		"/C/Users/Dan/Documents/Resume/coverletter.txt"
+		"/C/Users/Dan/Coding/episode_parser/tests/test_Cache.py"
 	],
 	"find":
 	{
@@ -734,6 +761,13 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"object_list",
+			"posts",
+			"page_obj",
+			"articles",
+			"Post.objects",
+			"contacts",
+			"latest_poll_list",
 			"id",
 			"colmask",
 			"wrapper",
@@ -854,14 +888,7 @@
 			"content",
 			"format(aid)",
 			"_create_db_query",
-			"RESOURCE_PATH",
-			"Asc",
-			"Utils",
-			"rename_backup",
-			"with old",
-			"logging",
-			"Settings",
-			"Parser"
+			"RESOURCE_PATH"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -939,159 +966,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "templates/polls/detail.html",
-					"settings":
-					{
-						"buffer_size": 653,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								25,
-								25
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 0,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": false,
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"Python Django": "python"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "templates/polls/results.html",
-					"settings":
-					{
-						"buffer_size": 441,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								152,
-								152
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 0,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": false,
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"Python Django": "python"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1126,6 +1002,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
 	"replace":
 	{
 		"height": 62.0
@@ -1137,27 +1017,127 @@
 		"selected_items":
 		[
 			[
+				"vi",
+				"blog/views.py"
+			],
+			[
+				"pag",
+				"blog/templatetags/pageination_template.html"
+			],
+			[
+				"pa",
+				"blog/templatetags/pagination.py"
+			],
+			[
+				"bo",
+				"templates/blog/blog_base.html"
+			],
+			[
+				"url",
+				"blog/urls.py"
+			],
+			[
+				"blogb",
+				"templates/blog/blog_base.html"
+			],
+			[
+				"inde",
+				"templates/blog/index.html"
+			],
+			[
+				"vie",
+				"polls/views.py"
+			],
+			[
+				"ve",
+				"blog/views.py"
+			],
+			[
+				"adm",
+				"blog/admin.py"
+			],
+			[
+				"mode",
+				"blog/models.py"
+			],
+			[
+				"view",
+				"blog/views.py"
+			],
+			[
+				"index",
+				"templates/blog/index.html"
+			],
+			[
+				"ad",
+				"blog/admin.py"
+			],
+			[
+				"models",
+				"blog/models.py"
+			],
+			[
+				"sett",
+				"settings.py"
+			],
+			[
+				"blog/",
+				"templates/blog/article.html"
+			],
+			[
+				"det",
+				"templates/polls/detail.html"
+			],
+			[
+				"model",
+				"templates/blog/index.html"
+			],
+			[
+				"v",
+				"polls/views.py"
+			],
+			[
+				"ur",
+				"blog/urls.py"
+			],
+			[
+				"mo",
+				"polls/models.py"
+			],
+			[
+				"mod",
+				"blog/models.py"
+			],
+			[
+				"html",
+				"templates/polls/results.html"
+			],
+			[
+				"deta",
+				"templates/polls/detail.html"
+			],
+			[
+				"polls",
+				"templates/polls/index.html"
+			],
+			[
+				"base",
+				"templates/base.html"
+			],
+			[
+				"admin",
+				"blog/admin.py"
+			],
+			[
+				"blog",
+				"blog/models.py"
+			],
+			[
 				"sty",
 				"media/style.css"
 			],
 			[
-				"inde",
-				"templates/index.html"
-			],
-			[
-				"index",
-				"templates/index.html"
-			],
-			[
 				"se",
-				"settings.py"
-			],
-			[
-				"url",
-				"urls.py"
-			],
-			[
-				"sett",
 				"settings.py"
 			],
 			[
@@ -1167,18 +1147,6 @@
 			[
 				"u",
 				"urls.py"
-			],
-			[
-				"v",
-				"polls/views.py"
-			],
-			[
-				"ur",
-				"urls.py"
-			],
-			[
-				"polls",
-				"polls/models.py"
 			],
 			[
 				"set",
@@ -1413,16 +1381,8 @@
 				".gitignore"
 			],
 			[
-				"pa",
-				"episode_parser/Parser.py"
-			],
-			[
 				"ex",
 				"episode_parser/Exceptions.py"
-			],
-			[
-				"view",
-				"polls/views.py"
 			],
 			[
 				"regv",
@@ -1437,16 +1397,8 @@
 				"registration/urls.py"
 			],
 			[
-				"mod",
-				"apps/polls/models.py"
-			],
-			[
 				"te",
 				"templates/polls/results.html"
-			],
-			[
-				"ad",
-				"apps/polls/admin.py"
 			],
 			[
 				"episo",
@@ -1461,16 +1413,8 @@
 				"episode_parser/tests/test_Utils.py"
 			],
 			[
-				"html",
-				"templates/polls/detail.html"
-			],
-			[
 				"b",
 				"templates/polls/base.html"
-			],
-			[
-				"vi",
-				"polls/views.py"
 			],
 			[
 				".h",

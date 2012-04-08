@@ -17,4 +17,9 @@
     <div class="post_summary">
         <p>{{post.body}}</p>
     </div>
+
+    {% if post.comment_set %}
+        <p>Comments:</p>
+    {% endif %}
+
 {% endblock %}
