@@ -1,5 +1,8 @@
 {% extends "blog/blog_base.html" %}
 
+{% load comments %}
+
+
 {% block header %}
 <h2> Blog Posts </h2>
 {% endblock %}
@@ -8,7 +11,7 @@
     {% if object_list %}
         <ul>
             {% for post in object_list %}
-            <div class="title"><a href="/blog/{{post.slug}}"> {{ post.title }} </a> </div>
+            <div class="title"><a href="{% url slug_view post.slug %}"> {{ post.title }} </a> </div>
                 <ul>
                     <div class="time">{{ post.created }}</div>
                     {% if post.body|length > 200 %}
@@ -16,7 +19,9 @@
                     {% else %}
                         <div class="summary">{{ post.body|linebreaks }} <div>
                     {% endif %}
-                    <div class="comments"> # of comments: {{post.comment_set.count}} </div>
+
+                    {% get_comment_count for post as num_comments %}
+                    <div class="comments"> # of comments: {{ num_comments }} </div>
                 </ul>
             {% endfor %}
         </ul>
