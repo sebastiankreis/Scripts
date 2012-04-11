@@ -150,3 +150,10 @@ img {
     padding:10px;
     margin:0;
 }
+
+.comment_form {
+    font:13px Arial, sans-serif
+    margin:20px;
+    padding:10px 20px;
+    width:330px;
+}

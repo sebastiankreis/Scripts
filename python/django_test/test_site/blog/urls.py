@@ -1,7 +1,8 @@
-from django.conf.urls.defaults import patterns, url
+from django.conf.urls.defaults import patterns, url, include
 from django.views.generic import ListView, DetailView
 
 from models import Post
+from feed import BlogRss
 
 urlpatterns = patterns('',
     url(r'^$',
@@ -14,7 +15,7 @@ urlpatterns = patterns('',
         name="poll_list"
     ),
 
-    url(r'^(?P<slug>[\w\d\-]+)/$',
+    url(r'^article/(?P<slug>[\w\d\-]+)/$',
         DetailView.as_view(
             model=Post,
             template_name='blog/article.html'
@@ -24,5 +25,10 @@ urlpatterns = patterns('',
 
     url(r'^archive/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/$', 'blog.views.date_view'),
     url(r'^archive/(?P<year>\d+)/(?P<month>\d+)/$', 'blog.views.date_view'),
-    url(r'^archive/(?P<year>\d+)/$', 'blog.views.date_view')
+    url(r'^archive/(?P<year>\d+)/$', 'blog.views.date_view'),
+
+    url(r'^feed/$', BlogRss()),
+
+    url(r'^comments/', include('django.contrib.comments.urls')),
+
 )
