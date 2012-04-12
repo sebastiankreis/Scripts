@@ -49,11 +49,9 @@ if __name__ == '__main__':
 
     if not paths:
         print("No path from {} to {} was found".format(start_node, end_node))
-        sys.exit(1)
-
-    print("All paths from node {} to node {} are".format(start_node, end_node))
-
-    for n, p in enumerate(paths, start=1):
-        print("Path {}: {}".format(n, p))
+    else:
+         print("All paths from node {} to node {} are".format(start_node, end_node))
+         for n, p in enumerate(paths, start=1):
+                  print("Path {}: {}".format(n, p))
 
     sys.exit(0)
