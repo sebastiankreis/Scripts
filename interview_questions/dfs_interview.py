@@ -7,11 +7,12 @@ import sys  # for sys.exit
 ## We will represent the graph simply as a mapping of nodes to a
 ## list of adjacent nodes.  This is similar to using the standard
 ## adjacency list.
-graph = {'a': ['b', 'c'],
-         'b': ['d'],
-         'c': ['d'],
-         'd': ['b', 'c'],
-         }
+graph = {
+  'a': ['b', 'c'],
+  'b': ['d'],
+  'c': ['d'],
+  'd': ['b', 'c'],
+}
 
 start_node = 'a'
 end_node = 'd'
@@ -34,8 +35,9 @@ def dfs_all_paths(graph, start_node, end_node, path):
 
     paths = []
     for node in graph[start_node]:
+        ## If the node is not already in the path recursively explore it
         if node not in path:
-            paths.extend(dfs_all_paths(graph, node, end_node, path))
+            paths += dfs_all_paths(graph, node, end_node, path)
 
     return paths
 
@@ -50,8 +52,8 @@ if __name__ == '__main__':
     if not paths:
         print("No path from {} to {} was found".format(start_node, end_node))
     else:
-         print("All paths from node {} to node {} are".format(start_node, end_node))
-         for n, p in enumerate(paths, start=1):
-                  print("Path {}: {}".format(n, p))
+        print("All paths from node {} to node {} are".format(start_node, end_node))
+        for n, p in enumerate(paths, start=1):
+            print("Path {}: {}".format(n, p))
 
     sys.exit(0)
