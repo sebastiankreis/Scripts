@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'polls',
     'registration',
     'blog',
+    'wiki',
 )
 
 # A sample logging configuration. The only tangible logging
