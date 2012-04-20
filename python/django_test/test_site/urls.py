@@ -1,5 +1,5 @@
-from django.conf.urls.defaults import patterns, include, url
-from django.views.generic.simple import direct_to_template
+from django.conf.urls import patterns, include, url
+from django.views.generic import TemplateView
 from django.contrib import admin
 from django.conf import settings
 admin.autodiscover()
@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('registration.urls')),
     url(r'^blog/', include('blog.urls')),
     url(r'wiki/', include('wiki.urls')),
-    url(r'^$', direct_to_template, {'template': 'index.html'})
+    url(r'^$', TemplateView.as_view(template_name='index.html'))
 )
 
 if settings.DEBUG:

@@ -1,5 +1,6 @@
-from django.conf.urls.defaults import patterns, url, include
+from django.conf.urls import patterns, url, include
 from django.views.generic import ListView, DetailView
+from blog.views import FilteredListView
 
 from models import Post
 from feed import BlogRss
@@ -21,11 +22,26 @@ urlpatterns = patterns('',
             template_name='blog/article.html'
             ),
         name="slug_view"
-        ),
+    ),
 
-    url(r'^archive/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/$', 'blog.views.date_view'),
-    url(r'^archive/(?P<year>\d+)/(?P<month>\d+)/$', 'blog.views.date_view'),
-    url(r'^archive/(?P<year>\d+)/$', 'blog.views.date_view'),
+    url(r'^archive/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/$',
+        FilteredListView.as_view(
+            model=Post,
+            template_name="blog/index.html"
+            )
+    ),
+
+    url(r'^archive/(?P<year>\d+)/(?P<month>\d+)/$', FilteredListView.as_view(
+        model=Post,
+        template_name="blog/index.html"
+        )
+    ),
+
+    url(r'^archive/(?P<year>\d+)/$', FilteredListView.as_view(
+        model=Post,
+        template_name="blog/index.html"
+        )
+    ),
 
     url(r'^feed/$', BlogRss()),
 
