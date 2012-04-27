@@ -10,7 +10,7 @@ from django import template
 register = template.Library()
 
 
-def paginate(context, adjacent_pages=2):
+def shorten(context):
     """
     To be used in conjunction with the object_list generic view.
 

@@ -10,37 +10,31 @@ urlpatterns = patterns('',
         ListView.as_view(
             queryset=Post.objects.order_by('-created'),
             context_object_name='posts',
-            template_name="blog/index.html",
-            paginate_by=12
+            template_name="blog/index.html"
             ),
-        name="poll_list"
+        name="post_list"
     ),
 
     url(r'^article/(?P<slug>[\w\d\-]+)/$',
         DetailView.as_view(
             model=Post,
-            template_name='blog/article.html'
+            template_name='blog/article.html',
             ),
         name="slug_view"
     ),
 
+    url(r'^post/', 'blog.views.new_post', name="new_post"),
+
     url(r'^archive/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/$',
-        FilteredListView.as_view(
-            model=Post,
-            template_name="blog/index.html"
-            )
+        FilteredListView.as_view(model=Post)
     ),
 
-    url(r'^archive/(?P<year>\d+)/(?P<month>\d+)/$', FilteredListView.as_view(
-        model=Post,
-        template_name="blog/index.html"
-        )
+    url(r'^archive/(?P<year>\d+)/(?P<month>\d+)/$',
+        FilteredListView.as_view(model=Post)
     ),
 
-    url(r'^archive/(?P<year>\d+)/$', FilteredListView.as_view(
-        model=Post,
-        template_name="blog/index.html"
-        )
+    url(r'^archive/(?P<year>\d+)/$',
+        FilteredListView.as_view(model=Post)
     ),
 
     url(r'^feed/$', BlogRss()),

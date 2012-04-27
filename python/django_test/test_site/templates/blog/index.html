@@ -13,15 +13,16 @@
             {% for post in posts %}
             <div class="title"><a href="{% url slug_view post.slug %}"> {{ post.title }} </a> </div>
                 <ul>
-                    <div class="time">{{ post.created }}</div>
+                    <div class="blog_author">Posted by: {{ post.username }} </div>
+                    <div class="blog_time">{{ post.created }}</div>
                     {% if post.body|length > 200 %}
-                        <div class="summary">{{ post.body|linebreaks|slice:":200" }} ...</div>
+                        <div class="blog_summary">{{ post.body|linebreaks|slice:":200" }} ...</div>
                     {% else %}
-                        <div class="summary">{{ post.body|linebreaks }} </div>
+                        <div class="blog_summary">{{ post.body|linebreaks }} </div>
                     {% endif %}
 
                     {% get_comment_count for post as num_comments %}
-                    <div class="comments"> # of comments: {{ num_comments }} </div>
+                    <div class="blog_comments"> # of comments: {{ num_comments }} </div>
                 </ul>
             {% endfor %}
         </ul>
@@ -29,9 +30,6 @@
         <p>No blog posts are available.</p>
     {% endif %}
 
-{% if is_paginated %}
-    {% load pagination %}
-    {% paginate 3 %}
-{% endif %}
+    <a href="{% url new_post %}">Create new blog post</a>
 
 {% endblock %}

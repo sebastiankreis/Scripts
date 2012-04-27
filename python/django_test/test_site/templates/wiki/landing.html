@@ -1,0 +1,33 @@
+{% extends "wiki/wiki_base.html" %}
+
+{% block content %}
+
+{% if recent_entries %}
+    <h1>Some recent entries:</h1>
+
+    <ul>
+    {% for entry in recent_entries %}
+        <li>
+            <a href="{% url view_page entry.title %}">{{ entry }} </a>
+        </li>
+    {% endfor %}
+    </ul>
+
+{% else %}
+
+    <h1>No recent entries... yet!</h1>
+
+{% endif %}
+
+<h3>
+    <div class="search">
+        <form method="post" action="{% url search %}">
+            {% csrf_token %}
+            <label>Try looking for a new page?</label> </br>
+            <input type="text" name="search_term" id="site-search-input" onfocus="if(this.value==this.defaultValue) this.value='';" value="Search" />
+            <input type="submit"/>
+        </form>
+    </div>
+</h3>
+
+{% endblock %}

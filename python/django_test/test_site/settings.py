@@ -5,6 +5,8 @@ import os
 def abspath(path):
     return os.path.abspath(os.path.join(os.path.dirname(__file__), path)).replace('\\', '/')
 
+ACCOUNT_ACTIVATION_DAYS = 2
+LOGIN_URL = '/accounts/login'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -27,6 +29,9 @@ DATABASES = {
     }
 }
 
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 40002
+EMAIL_USE_TLS = False
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -107,12 +112,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+
 ROOT_URLCONF = 'test_site.urls'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
     abspath('templates'),
 )
 
@@ -124,14 +127,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.comments',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'polls',
     'registration',
     'blog',
     'wiki',
+    'url_shortener'
 )
 
 # A sample logging configuration. The only tangible logging

@@ -1,0 +1,10 @@
+{% extends "blog/blog_base.html" %}
+
+{% block content %}
+    {% if form %}
+        <form action="{% url blog.views.new_post %}" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+        </form>
+    {% endif %}
+{% endblock %}

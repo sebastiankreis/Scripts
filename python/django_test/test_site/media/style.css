@@ -37,6 +37,12 @@ img {
 }
 
 /* Header styles */
+.user_menu{
+    margin:10px 0 0 10;
+    float: right;
+    padding: 00px 40px 0px 0px;
+}
+
 #header {
     clear:both;
     float:left;

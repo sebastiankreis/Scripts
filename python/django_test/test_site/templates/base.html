@@ -10,9 +10,15 @@
 <body>
 
     <div id="header">
-        {% block header %}
         <h2>Default Header</h2>
-        {% endblock %}
+        <div class="user_menu">
+            {% if user.is_authenticated %}
+                <a href="/accounts/logout">Logout</a>
+            {% else %}
+                <a href="/accounts/logout">Login</a> or
+                <a href="/accounts/register">Register</a>
+            {% endif %}
+        </div>
     </div>
 
     <div class="colmask leftmenu">
@@ -26,7 +32,6 @@
                 <a href="/"> <p>Home</p> </a>
                 <a href="/polls"> <p> Go to Polls</p> </a>
                 <a href="/blog"> <p>Go to the Blog </p> </a>
-                <a href="/accounts/register"> <p> User Registration </p> </a>
                 <a href="/wiki"> <p>Go to the Wiki</p></a>
             </div>
         </div>

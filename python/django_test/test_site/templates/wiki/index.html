@@ -4,10 +4,25 @@
 
 {% if page %}
     <h1>{{ page.title }}</h1>
-    <p> {{ page.content|linebreaks }} </p>
+
+    {% if user.is_authenticated %}
+        <a href="{% url edit_page page.title %}">Edit {{page.title}}</a>
+    {% endif %}
+
+    <div class="wiki_article">
+        <p> {{ page.content|linebreaks }} </p>
+    </div>
+
 {% else %}
     <h1>{{ page_name }}</h1>
-    <p>This page does not exist, would you like to <a href="/wiki/{{ page_name }}/edit">create it?</a> </p>
+    {% if not user.is_authenticated %}
+        <p>This page does not exist.  In order to create it you first need to
+            <a href="{% url django.contrib.auth.views.login %}?next={% url edit_page page_name %}">login</a>
+            or <a href="/accounts/register"> register </a>
+        </p>
+    {% else %}
+        <p>This page does not exist, would you like to <a href="{% url edit_page page_name %}">create it?</a> </p>
+    {% endif %}
 {% endif %}
 
 {% endblock %}
