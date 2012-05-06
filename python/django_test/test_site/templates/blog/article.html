@@ -7,7 +7,12 @@
 
 {% block content %}
     <div class="post_title">
-        <p><b>{{post.title}}</b></p>
+        <p>
+            <b>{{post.title}}</b>
+            {% if user.username == post.username %}
+                <a href="{% url edit_post post.slug %}">  [Edit Post]</a>
+            {% endif %}
+        </p>
     </div>
 
     <div class="post_date">

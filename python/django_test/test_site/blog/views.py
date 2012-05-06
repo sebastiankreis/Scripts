@@ -1,7 +1,8 @@
-from django.views.generic import ListView
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.views.generic import ListView
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from datetime import datetime
 
 from models import Post, NewPostForm
@@ -27,6 +28,31 @@ class FilteredListView(ListView):
         return posts
 
 
+@login_required
+def edit_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+
+    if request.user.username != post.username:
+        return HttpResponseRedirect(reverse('slug_view', args=(post.slug,)))
+
+    form = NewPostForm(request.POST or None,
+            initial={'username': post.username,
+                     'email': post.email,
+                     'title': post.title,
+                     'body': post.body})
+
+    if form.is_valid():
+        post.title = form.cleaned_data['title']
+        post.body = form.cleaned_data['body']
+        post.created = datetime.now()
+
+        post.save()
+
+        return HttpResponseRedirect(reverse('slug_view', args=(post.slug,)))
+
+    return render(request, 'blog/new_post.html', {'form': form, 'slug': slug})
+
+
 def new_post(request):
     if request.user.is_authenticated():
         username = request.user.username
@@ -35,23 +61,21 @@ def new_post(request):
         username = "Anonmyous"
         email = "Anon@Anon.com"
 
-    if request.method == 'POST':
-        form = NewPostForm(request.POST)
+    form = NewPostForm(request.POST or None,
+            initial={'username': username, 'email': email})
 
-        if form.is_valid():
-            title = form.cleaned_data['title']
-            body = form.cleaned_data['body']
-            created = datetime.now()
+    if form.is_valid():
+        title = form.cleaned_data['title']
+        body = form.cleaned_data['body']
+        created = datetime.now()
 
-            data = {'username': username, 'email': email,
-                    'body': body, 'created': created, 'title': title}
+        data = {'username': username, 'email': email,
+                'body': body, 'created': created, 'title': title}
 
-            p = Post(**data)
+        p = Post(**data)
 
-            p.save()
+        p.save()
 
-            return HttpResponseRedirect(reverse('slug_view', args=(p.slug,)))
-    else:
-        form = NewPostForm(initial={'username': username, 'email': email})
+        return HttpResponseRedirect(reverse('slug_view', args=(p.slug,)))
 
     return render(request, 'blog/new_post.html', {'form': form})

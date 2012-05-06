@@ -23,8 +23,6 @@ urlpatterns = patterns('',
         name="slug_view"
     ),
 
-    url(r'^post/', 'blog.views.new_post', name="new_post"),
-
     url(r'^archive/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/$',
         FilteredListView.as_view(model=Post)
     ),
@@ -38,6 +36,10 @@ urlpatterns = patterns('',
     ),
 
     url(r'^feed/$', BlogRss()),
+
+    url(r'article/(?P<slug>[\w\d\-]+)/edit$', 'blog.views.edit_post', name="edit_post"),
+
+    url(r'^post/', 'blog.views.new_post', name="new_post"),
 
     url(r'^comments/', include('django.contrib.comments.urls')),
 

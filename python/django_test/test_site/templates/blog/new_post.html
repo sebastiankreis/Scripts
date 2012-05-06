@@ -2,9 +2,14 @@
 
 {% block content %}
     {% if form %}
-        <form action="{% url blog.views.new_post %}" method="post">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" />
+        {% if not slug %}
+        <form action="{% url blog.views.new_post %}" method="post">
+        {% else %}
+        <form action="{% url blog.views.edit_post slug %}" method="post">
+        {% endif %}
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit" />
         </form>
     {% endif %}
 {% endblock %}
